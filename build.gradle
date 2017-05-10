@@ -28,6 +28,8 @@ configurations {
 
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-web')
+	compile('org.projectlombok:lombok:1.16.16')
+	compile('pl.allegro.tech.boot:handlebars-spring-boot-starter:0.2.15')
 	providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
