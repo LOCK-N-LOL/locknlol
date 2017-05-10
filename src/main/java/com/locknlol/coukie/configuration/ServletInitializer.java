@@ -1,4 +1,4 @@
-package com.locknlol.coukie;
+package com.locknlol.coukie.configuration;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
