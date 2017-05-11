@@ -1,4 +1,4 @@
-package com.locknlol.coukie.configuration;
+package com.locknlol.coukie;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
