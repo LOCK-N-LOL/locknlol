@@ -1,4 +1,4 @@
-package com.locknlol.coukie.domain.member;
+package com.locknlol.coukie.domain.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -7,12 +7,12 @@ import org.springframework.stereotype.Service;
  * Created by Oscar on 2017. 5. 10..
  */
 @Service
-public class MemberFindService {
+public class UserFindService {
 
 	@Autowired
-	private MemberRepository repository;
+	private UserRepository repository;
 
-	public Member findBySummonerId(String summonerId) {
+	public User findBySummonerId(String summonerId) {
 		return repository.findBySummonerId(summonerId);
 	}
 }

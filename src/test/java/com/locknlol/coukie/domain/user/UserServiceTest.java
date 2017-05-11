@@ -1,4 +1,4 @@
-package com.locknlol.coukie.domain.member;
+package com.locknlol.coukie.domain.user;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -15,31 +15,31 @@ import static org.mockito.Mockito.when;
  * Created by Oscar on 2017. 5. 11..
  */
 @RunWith(MockitoJUnitRunner.class)
-public class MemberServiceTest {
+public class UserServiceTest {
 	@InjectMocks
-	private MemberService memberService;
+	private UserService userService;
 	@Mock
-	private MemberFindService memberFindService;
+	private UserFindService userFindService;
 	@Mock
-	private MemberSaveService memberSaveService;
+	private UserSaveService userSaveService;
 
-	private Member member;
+	private User user;
 
 	@Before
 	public void setUp() {
-		member = new Member();
-		member.setId(1L);
-		member.setPassword("abcd");
-		member.setSummonerId("oscar");
+		user = new User();
+		user.setId(1L);
+		user.setPassword("abcd");
+		user.setSummonerId("oscar");
 	}
 
 	@Test
 	public void save_member_if_summonId_does_not_exist_Test() {
-		when(memberFindService.findBySummonerId(anyString())).thenReturn(null);
+		when(userFindService.findBySummonerId(anyString())).thenReturn(null);
 
-		memberService.saveMember(member);
+		userService.saveMember(user);
 
-		verify(memberSaveService).saveMember(member);
+		verify(userSaveService).saveMember(user);
 
 	}
 }

@@ -1,7 +1,7 @@
 package com.locknlol.coukie.controller;
 
-import com.locknlol.coukie.domain.member.Member;
-import com.locknlol.coukie.domain.member.MemberService;
+import com.locknlol.coukie.domain.user.User;
+import com.locknlol.coukie.domain.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -11,14 +11,14 @@ import org.springframework.web.bind.annotation.*;
  */
 @Controller
 @RequestMapping(value = "/api")
-public class MemberController {
+public class UserController {
 
 	@Autowired
-	private MemberService memberService;
+	private UserService userService;
 
 	@RequestMapping(value = "/v1/member", method = RequestMethod.POST)
 	@ResponseBody
-	public Member memberSave(@RequestBody Member member) {
-		return memberService.saveMember(member);
+	public User memberSave(@RequestBody User user) {
+		return userService.saveMember(user);
 	}
 }

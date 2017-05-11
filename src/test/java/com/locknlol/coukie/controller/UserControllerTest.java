@@ -1,7 +1,7 @@
 package com.locknlol.coukie.controller;
 
-import com.locknlol.coukie.domain.member.Member;
-import com.locknlol.coukie.domain.member.MemberService;
+import com.locknlol.coukie.domain.user.User;
+import com.locknlol.coukie.domain.user.UserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -15,18 +15,18 @@ import static org.mockito.Mockito.verify;
  * Created by Oscar on 2017. 5. 10..
  */
 @RunWith(MockitoJUnitRunner.class)
-public class MemberControllerTest {
+public class UserControllerTest {
 
 	@InjectMocks
-	private MemberController memberController;
+	private UserController userController;
 	@Mock
-	private MemberService memberService;
+	private UserService userService;
 
 
 	@Test
 	public void member_save_test() {
-		memberController.memberSave(new Member());
+		userController.memberSave(new User());
 
-		verify(memberService).saveMember(any(Member.class));
+		verify(userService).saveMember(any(User.class));
 	}
 }

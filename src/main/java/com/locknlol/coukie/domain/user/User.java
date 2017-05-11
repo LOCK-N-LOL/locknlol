@@ -1,10 +1,10 @@
-package com.locknlol.coukie.domain.member;
+package com.locknlol.coukie.domain.user;
 
+import com.locknlol.coukie.domain.common.CommonModel;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
-import java.util.Date;
 
 /**
  * Created by Oscar on 2017. 5. 10..
@@ -12,13 +12,13 @@ import java.util.Date;
 
 @Data
 @Entity
-@Table(name = "member")
+@Table(name = "l_user")
 @EqualsAndHashCode(of = { "id" }, callSuper = false)
-public class Member {
+public class User extends CommonModel{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "memberId", nullable = false)
+	@Column(name = "userId", nullable = false)
 	private Long id;
 
 	@Column(name = "summonerId", nullable = false)
@@ -26,10 +26,4 @@ public class Member {
 
 	@Column(name = "password", nullable = false)
 	private String password;
-
-	@Temporal(value = TemporalType.TIMESTAMP)
-	private Date createdAt;
-
-	@Temporal(value = TemporalType.TIMESTAMP)
-	private Date modifiedAt;
 }
