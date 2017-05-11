@@ -1,5 +1,6 @@
 package com.locknlol.coukie.configuration;
 
+import com.locknlol.coukie.LocknlolApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
 
