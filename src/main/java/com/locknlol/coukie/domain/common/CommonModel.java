@@ -18,14 +18,14 @@ public abstract class CommonModel implements Creatable, Modifiable{
 	@Column(name = "createdBy", nullable = false, updatable = false, length = 40)
 	private String createdBy;
 
-	@Temporal(TemporalType.TIMESTAMP)
+	@Temporal(TemporalType.DATE)
 	@Column(name = "createdAt", nullable = false, updatable = false, length = 6)
 	private Date createdAt;
 
 	@Column(name = "modifiedBy", nullable = false, length = 40)
 	private String modifiedBy;
 
-	@Temporal(TemporalType.TIMESTAMP)
+	@Temporal(TemporalType.DATE)
 	@Column(name = "modifiedAt", nullable = false, length = 6)
 	private Date modifiedAt;
 

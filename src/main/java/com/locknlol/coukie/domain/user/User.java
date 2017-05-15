@@ -1,5 +1,6 @@
 package com.locknlol.coukie.domain.user;
 
+import com.locknlol.coukie.domain.Tier;
 import com.locknlol.coukie.domain.common.CommonModel;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -26,4 +27,7 @@ public class User extends CommonModel{
 
 	@Column(name = "password", nullable = false)
 	private String password;
+
+	@Enumerated(value = EnumType.STRING)
+	private Tier tier;
 }

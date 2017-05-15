@@ -26,7 +26,53 @@ configurations {
 	providedRuntime
 }
 
+def queryDslOutput = file("src/main/java")
+
+sourceSets {
+	main {
+		java {
+			srcDir "src/main/generated"
+		}
+	}
+}
+
+task generateQueryDSL(type: JavaCompile, group: 'build') {
+	doFirst {
+		if (!queryDslOutput.exists()) {
+			logger.info("Creating `$queryDslOutput` directory")
+
+			if (!queryDslOutput.mkdirs()) {
+				throw new InvalidUserDataException("Unable to create `$queryDslOutput` directory")
+			}
+		}
+	}
+
+	source = sourceSets.main.java
+	classpath = configurations.compile
+	options.compilerArgs = [
+			"-proc:only",
+			"-processor",
+			"com.querydsl.apt.jpa.JPAAnnotationProcessor"
+	]
+	destinationDir = queryDslOutput
+}
+
+compileTestJava.dependsOn(generateQueryDSL)
+
+clean {
+	delete queryDslOutput
+}
+
 dependencies {
+	def querydslVersion = "4.1.4"
+
+	/**
+	 * querydsl dependency
+	 */
+	compile ("com.querydsl:querydsl-core:$querydslVersion")
+	compile ("com.querydsl:querydsl-apt:$querydslVersion")
+	compile ("com.querydsl:querydsl-jpa:$querydslVersion")
+
 	compile('org.springframework.boot:spring-boot-starter-web')
 	compile('org.projectlombok:lombok:1.16.16')
 	compile('pl.allegro.tech.boot:handlebars-spring-boot-starter:0.2.15')
