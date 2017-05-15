@@ -36,7 +36,7 @@ sourceSets {
 	}
 }
 
-task generateJpaMetaModel(type: JavaCompile, group: 'build') {
+task generateJpaMetaModel(type: JavaCompile, group: 'other') {
 	doFirst {
 		if (!queryDslOutput.exists()) {
 			logger.info("Creating `$queryDslOutput` directory")
