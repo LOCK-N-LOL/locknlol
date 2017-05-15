@@ -26,17 +26,17 @@ configurations {
 	providedRuntime
 }
 
-def queryDslOutput = file("src/main/java")
+def queryDslOutput = file("src/main/java/generated")
 
 sourceSets {
 	main {
 		java {
-			srcDir "src/main/generated"
+			srcDir "src/main/java/generated"
 		}
 	}
 }
 
-task generateQueryDSL(type: JavaCompile, group: 'build') {
+task generateJpaMetaModel(type: JavaCompile, group: 'build') {
 	doFirst {
 		if (!queryDslOutput.exists()) {
 			logger.info("Creating `$queryDslOutput` directory")
@@ -57,7 +57,7 @@ task generateQueryDSL(type: JavaCompile, group: 'build') {
 	destinationDir = queryDslOutput
 }
 
-compileTestJava.dependsOn(generateQueryDSL)
+compileTestJava.dependsOn(generateJpaMetaModel)
 
 clean {
 	delete queryDslOutput
