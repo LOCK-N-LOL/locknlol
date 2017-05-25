@@ -23,6 +23,11 @@ public class UserController {
 		return userService.saveMember(user);
 	}
 
+	@RequestMapping(value = "/v1/member", method = RequestMethod.DELETE)
+	public void doing() {
+
+	}
+
 	@RequestMapping(value = "/v1/member/{tier}", method = RequestMethod.GET)
 	public List<User> findMember(@PathVariable Tier tier) {
 		return userService.findByTier(tier);
