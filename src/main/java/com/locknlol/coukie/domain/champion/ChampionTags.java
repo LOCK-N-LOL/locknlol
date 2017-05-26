@@ -1,7 +1,6 @@
 package com.locknlol.coukie.domain.champion;
 
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -13,5 +12,5 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "champion_tags")
 public class ChampionTags {
-	String name;
+	private String name;
 }

@@ -1,7 +1,6 @@
 package com.locknlol.coukie.domain.champion;
 
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -14,8 +13,8 @@ import javax.persistence.Table;
 @Table(name = "champion_infos")
 public class ChampionInfo {
 
-	public Long attack;
-	public Long defense;
-	public Long magic;
-	public Long difficulty;
+	private Long attack;
+	private Long defense;
+	private Long magic;
+	private Long difficulty;
 }

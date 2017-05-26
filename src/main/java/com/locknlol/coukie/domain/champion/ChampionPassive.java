@@ -1,7 +1,6 @@
 package com.locknlol.coukie.domain.champion;
 
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -14,9 +13,9 @@ import javax.persistence.Table;
 @Table(name = "champion_passives")
 public class ChampionPassive {
 
-	public String name;
-	public String description;
-	public ChampionSpellImage championSpellImage;
+	private String name;
+	private String description;
+	private ChampionPassiveImage image;
 
 
 }

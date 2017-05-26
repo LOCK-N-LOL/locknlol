@@ -1,7 +1,6 @@
 package com.locknlol.coukie.domain.champion;
 
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -14,8 +13,8 @@ import javax.persistence.Table;
 @Table(name = "champion_spells")
 public class ChampionSpell {
 
-	public String name;
-	public String description;
-	public ChampionSpellImage image;
-	public String key;
+	private String name;
+	private String description;
+	private ChampionSpellImage image;
+	private String key;
 }

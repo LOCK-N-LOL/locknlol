@@ -1,7 +1,6 @@
 package com.locknlol.coukie.domain.champion;
 
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
 import java.util.List;
@@ -12,20 +11,19 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "champions")
-@EqualsAndHashCode(of = { "id" }, callSuper = false)
 public class Champion {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	public Long id;
-	public String key;
-	public String name;
-	public String title;
-	public ChampionImage image;
+	private Long id;
+	private String key;
+	private String name;
+	private String title;
+	private ChampionImage image;
+	//@ManyToOne
+	//public List<ChampionTags> tags;
+	private String partype;
+	private ChampionInfo info;
 	@ManyToOne
-	public List<ChampionTags> tags;
-	public String partype;
-	public ChampionInfo info;
-	@ManyToOne
-	public List<ChampionSpell> spells;
-	public ChampionPassive passive;
+	private List<ChampionSpell> spells;
+	private ChampionPassive passive;
 }

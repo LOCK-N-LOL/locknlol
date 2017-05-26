@@ -1,18 +1,23 @@
 package com.locknlol.coukie.adapter.staticdatav3;
 
+import com.google.gson.Gson;
+import com.locknlol.coukie.domain.champion.Champion;
 import org.springframework.boot.json.JacksonJsonParser;
+import org.springframework.stereotype.Component;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Map;
 
 /**
  * Created by kev on 2017. 5. 25.
  */
+@Component
 public class StaticDataV3Adapter {
 
-	public static void test() {
+	public Champion getJaxTest() {
 		BufferedReader rd = null;
 		HttpURLConnection conn = null;
 		try
@@ -50,13 +55,13 @@ public class StaticDataV3Adapter {
 
 		}
 		JacksonJsonParser jsonParser = new JacksonJsonParser();
-		System.out.println(jsonParser.parseMap(sb.toString()));
+		Map map = jsonParser.parseMap(sb.toString());
+		Map map2 = (Map)map.get("data");
 
-
+		Gson gson = new Gson();
+		Champion jax = gson.fromJson(gson.toJson(map2.get("Jax")),Champion.class);
+		return jax;
 	}
 
-	public static void main(String[] args) {
-		test();
-	}
 
 }
