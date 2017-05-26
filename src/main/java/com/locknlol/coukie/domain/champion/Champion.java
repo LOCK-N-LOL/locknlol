@@ -23,7 +23,7 @@ public class Champion {
 	//public List<ChampionTags> tags;
 	private String partype;
 	private ChampionInfo info;
-	@ManyToOne
+	@OneToMany
 	private List<ChampionSpell> spells;
 	private ChampionPassive passive;
 }
