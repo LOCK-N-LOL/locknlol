@@ -13,18 +13,18 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping("/api")
-public class RiotRealTimeController {
+public class RiotRealTimeCallController {
 
 	@Autowired
-	private RiotRealTimeService riotRealTimeService;
+	private RiotRealTimeCallService riotRealTimeCallService;
 
 	@RequestMapping(value = "/summoner/by-name/{name}", method = RequestMethod.GET)
 	public LolSummonerByNameResponse findSummonerByName(@PathVariable String name) throws Exception{
-		return riotRealTimeService.findSummonerByName(name);
+		return riotRealTimeCallService.findSummonerByName(name);
 	}
 
 	@RequestMapping(value = "/recent/matches/{name}", method = RequestMethod.GET)
 	public LolRecentMatchesResponse getRecentMatches(@PathVariable String name) throws Exception {
-		return riotRealTimeService.getRecentMatches(name);
+		return riotRealTimeCallService.getRecentMatches(name);
 	}
 }

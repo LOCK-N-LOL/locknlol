@@ -16,7 +16,7 @@ import java.util.Map;
  * Created by Oscar on 2017. 5. 27..
  */
 @Service
-public class RiotRealTimeService {
+public class RiotRealTimeCallService {
 
 	@Autowired
 	private RiotAdapter adapter;
@@ -34,6 +34,13 @@ public class RiotRealTimeService {
 		return adapter.get(RiotRequests.RECENT_MATCHES, RiotApiUrl.RECENT_MATCHES_BY_ACCOUNTID, requestParam);
 	}
 
+	/**
+	 * api는 accoundId로 콜해야되는데 우리는 소환사 명 밖에 모름 아래에서는 api를 찔러서 가져온 다음에 다시 찔러야함
+	 * 일단 기본 정보는 쌓는 db 정도는 하는게 어떨지? 그냥 api 콜로 처리??
+	 * @param summonerName 소환사 명
+	 * @return accountId
+	 * @throws Exception
+	 */
 	private Long getAccountIdBySummonerName(String summonerName) throws Exception {
 		LolSummonerByNameResponse response = findSummonerByName(summonerName);
 		Assert.notNull(response);

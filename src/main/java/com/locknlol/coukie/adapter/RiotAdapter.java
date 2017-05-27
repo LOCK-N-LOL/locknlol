@@ -31,6 +31,16 @@ public class RiotAdapter extends Adapter {
 		return get(request, apiUrl, requestParam, Collections.emptyMap());
 	}
 
+	/**
+	 *
+	 * @param request 어떠한 요청인지
+	 * @param apiUrl 요청에 해당하는 url
+	 * @param requestParam api Url의 Path Variable에 들어갈 param, 네이밍 맞추어 줘야함
+	 * @param getParam url 뒤에 붙을 param   ex) ?name=oscar&team=travel
+	 * @param <Res> response
+	 * @return
+	 * @throws Exception
+	 */
 	public <Res> Res get(RiotRequest<Res> request, RiotApiUrl apiUrl, Map<String, Object> requestParam, Map<String, Object> getParam)
 		throws Exception {
 		String url = urlBuilder.buildUrl(apiUrl, getParam);
