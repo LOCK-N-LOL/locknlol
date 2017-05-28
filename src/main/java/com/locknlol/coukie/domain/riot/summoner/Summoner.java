@@ -17,13 +17,16 @@ public class Summoner extends CommonModel{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "summonerId", nullable = false)
+	@Column(name = "id", nullable = false)
 	private Long id;
 
-	@Column(name = "summonerName")
+	@Column(name = "summonerName", updatable = false)
 	private String summonerName;
 
-	@Column(name = "accountId")
+	@Column(name = "accountId", updatable = false)
 	private Long accountId;
+
+	@Column(name = "summonerId", updatable = false)
+	private Long summonerId;
 }
 

@@ -1,6 +1,6 @@
 package com.locknlol.coukie.controller;
 
-import com.locknlol.coukie.domain.Tier;
+import com.locknlol.coukie.domain.user.Tier;
 import com.locknlol.coukie.domain.user.User;
 import com.locknlol.coukie.domain.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;

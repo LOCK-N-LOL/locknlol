@@ -1,4 +1,4 @@
-package com.locknlol.coukie.domain;
+package com.locknlol.coukie.domain.user;
 
 /**
  * Created by Oscar on 2017. 5. 15..

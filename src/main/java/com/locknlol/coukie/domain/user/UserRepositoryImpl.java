@@ -1,6 +1,5 @@
 package com.locknlol.coukie.domain.user;
 
-import com.locknlol.coukie.domain.Tier;
 import org.springframework.data.jpa.repository.support.QueryDslRepositorySupport;
 import org.springframework.stereotype.Repository;
 

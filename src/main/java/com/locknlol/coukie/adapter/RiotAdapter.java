@@ -47,8 +47,8 @@ public class RiotAdapter extends Adapter {
 		throws Exception {
 		String url = urlBuilder.buildUrl(apiUrl, getParam);
 		log.info("request url: {}", url);
-		String s = restTemplate.getForObject(url, String.class, requestParam);
-		log.info("request: {}", s);
-		return riotParser.parse(s, request.getResponseType());
+		String response = restTemplate.getForObject(url, String.class, requestParam);
+		log.info("request: {}", response);
+		return riotParser.parse(response, request.getResponseType());
 	}
 }

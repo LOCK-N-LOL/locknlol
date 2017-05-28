@@ -6,12 +6,15 @@ import com.locknlol.coukie.adapter.riot.RiotApiUrl;
 import com.locknlol.coukie.adapter.riot.RiotRequests;
 import com.locknlol.coukie.adapter.riot.response.LolRecentMatchesResponse;
 import com.locknlol.coukie.adapter.riot.response.LolSummonerByNameResponse;
+import com.locknlol.coukie.domain.riot.exception.LoLErrorCode;
 import com.locknlol.coukie.domain.riot.summoner.Summoner;
 import com.locknlol.coukie.domain.riot.summoner.SummonerFindService;
+import com.locknlol.coukie.domain.riot.exception.LoLException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.Assert;
+
+import java.util.Optional;
 
 /**
  * Created by Oscar on 2017. 5. 27..
@@ -48,9 +51,23 @@ public class RiotRealTimeCallService {
 			return summonerInfo.getAccountId();
 		}
 
-		LolSummonerByNameResponse response = findSummonerByName(summonerName);
-		Assert.notNull(response, summonerName + "에 해당하는 소환사 정보가 존재하지 않습니다.");
+		return Optional.ofNullable(findSummonerByName(summonerName))
+			.map(LolSummonerByNameResponse::getAccountId)
+			.orElseThrow(() -> new LoLException(LoLErrorCode.SUMMONER_NOT_FOUND));
+	}
 
-		return response.getAccountId();
+	private Long getSummonerIdBySummonerName(String summonerName) throws Exception {
+		Summoner summonerInfo = summonerFindService.findBySummonerName(summonerName);
+		if (summonerInfo != null) {
+			return summonerInfo.getId();
+		}
+
+		return Optional.ofNullable(findSummonerByName(summonerName))
+			.map(LolSummonerByNameResponse::getSummonerId)
+			.orElseThrow(() -> new LoLException(LoLErrorCode.SUMMONER_NOT_FOUND));
+	}
+
+	public boolean checkSummonerAuthByRunes(String summonerName) {
+		return false;
 	}
 }

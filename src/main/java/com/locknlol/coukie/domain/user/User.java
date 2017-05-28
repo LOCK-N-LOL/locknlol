@@ -1,6 +1,5 @@
 package com.locknlol.coukie.domain.user;
 
-import com.locknlol.coukie.domain.Tier;
 import com.locknlol.coukie.domain.common.CommonModel;
 import lombok.Data;
 import lombok.EqualsAndHashCode;

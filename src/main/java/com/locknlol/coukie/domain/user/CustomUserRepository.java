@@ -1,6 +1,5 @@
 package com.locknlol.coukie.domain.user;
 
-import com.locknlol.coukie.domain.Tier;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

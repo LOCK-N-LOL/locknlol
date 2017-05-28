@@ -1,6 +1,5 @@
 package com.locknlol.coukie.domain.user;
 
-import com.locknlol.coukie.domain.Tier;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
