@@ -7,4 +7,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
  */
 public interface Parser {
 	ObjectMapper mapper = new ObjectMapper();
+
+	default <T> T parse(String responseJson, Class<T> responseClazz) throws Exception {
+		T obj = mapper.readValue(responseJson, responseClazz);
+		return obj;
+	}
 }

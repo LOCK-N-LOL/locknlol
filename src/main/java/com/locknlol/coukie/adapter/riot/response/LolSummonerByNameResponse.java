@@ -1,5 +1,6 @@
 package com.locknlol.coukie.adapter.riot.response;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,17 +17,20 @@ public class LolSummonerByNameResponse {
 	/**
 	 * 소환사 이름
 	 */
-	private String name;
+	@JsonProperty("name")
+	private String summonerName;
 
 	private Long summonerLevel;
 	/**
 	 * 	Date summoner was last modified specified as epoch milliseconds. The following events will update this timestamp: profile icon change, playing the tutorial or advanced tutorial, finishing a game, summoner name change.
 	 */
-	private Long revisionDate;
+	@JsonProperty("revisionDate")
+	private Long updatedAt;
 	/**
 	 * Summoner ID.
 	 */
-	private Long id;
+	@JsonProperty("id")
+	private Long summonerId;
 	/**
 	 * Account ID.
 	 */

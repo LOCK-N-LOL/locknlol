@@ -19,6 +19,8 @@ import java.util.Map;
 @Component
 public class RiotAdapter extends Adapter {
 	@Autowired
+	private RiotParser riotParser;
+	@Autowired
 	private RestTemplate restTemplate;
 	@Autowired
 	private RiotUrlBuilder urlBuilder;
@@ -47,6 +49,6 @@ public class RiotAdapter extends Adapter {
 		log.info("request url: {}", url);
 		String s = restTemplate.getForObject(url, String.class, requestParam);
 		log.info("request: {}", s);
-		return RiotParser.parse(s, request.getResponseType());
+		return riotParser.parse(s, request.getResponseType());
 	}
 }
