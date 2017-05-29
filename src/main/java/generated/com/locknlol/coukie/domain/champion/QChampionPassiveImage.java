@@ -10,7 +10,7 @@ import com.querydsl.core.types.Path;
 
 
 /**
- * QChampionPassiveImage is a Querydsl query type for ChampionPassiveImage
+ * QChampionPassiveImage is a Querydsl query type for ChampionPassiveImageDto
  */
 @Generated("com.querydsl.codegen.EntitySerializer")
 public class QChampionPassiveImage extends EntityPathBase<ChampionPassiveImage> {

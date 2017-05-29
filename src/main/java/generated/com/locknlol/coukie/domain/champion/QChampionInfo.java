@@ -10,7 +10,7 @@ import com.querydsl.core.types.Path;
 
 
 /**
- * QChampionInfo is a Querydsl query type for ChampionInfo
+ * QChampionInfo is a Querydsl query type for ChampionInfoDto
  */
 @Generated("com.querydsl.codegen.EntitySerializer")
 public class QChampionInfo extends EntityPathBase<ChampionInfo> {

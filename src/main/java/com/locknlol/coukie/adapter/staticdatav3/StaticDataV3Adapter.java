@@ -1,15 +1,15 @@
 package com.locknlol.coukie.adapter.staticdatav3;
 
-import com.google.gson.Gson;
+import com.locknlol.coukie.adapter.RiotAdapter;
+import com.locknlol.coukie.adapter.riot.RiotApiUrl;
+import com.locknlol.coukie.adapter.riot.RiotRequests;
+import com.locknlol.coukie.adapter.riot.dto.champion.ChampionDto;
+import com.locknlol.coukie.adapter.riot.dto.champion.ChampionListDto;
 import com.locknlol.coukie.domain.champion.Champion;
-import org.springframework.boot.json.JacksonJsonParser;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.util.Map;
+import java.util.Collections;
 
 /**
  * Created by kev on 2017. 5. 25.
@@ -17,50 +17,15 @@ import java.util.Map;
 @Component
 public class StaticDataV3Adapter {
 
-	public Champion getJaxTest() {
-		BufferedReader rd = null;
-		HttpURLConnection conn = null;
-		try
+	private final RiotAdapter riotAdapter;
 
-		{
-			int id = 266;
-			String urlAdress = "https://kr.api.riotgames.com/lol/static-data/v3/champions?champListData=all&api_key=98930870-11b9-4d43-ad3d-2c629c631a38";
+	@Autowired
+	public StaticDataV3Adapter(RiotAdapter riotAdapter) {
+		this.riotAdapter = riotAdapter;
+	}
 
-			String urlAdress2 = "https://kr.api.riotgames.com/lol/static-data/v3/champions/" + id + "?api_key=RGAPI-57969e80-fe51-4674-bfc7-14c0cdd69617";
-			URL url = new URL(
-				urlAdress);
-			conn = (HttpURLConnection) url.openConnection();
-			conn.setRequestMethod("GET");
-			if (conn.getResponseCode() >= 200 && conn.getResponseCode() <= 300) {
-				rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-			} else {
-				rd = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
-			}
-		} catch (Exception e)
-		{
-			e.printStackTrace();
-		}
-		StringBuilder sb = new StringBuilder();
-		try {
-
-			String line;
-			while ((line = rd.readLine()) != null)
-
-			{
-				sb.append(line);
-			}
-			rd.close();
-			conn.disconnect();
-		} catch (Exception e) {
-
-		}
-		JacksonJsonParser jsonParser = new JacksonJsonParser();
-		Map map = jsonParser.parseMap(sb.toString());
-		Map map2 = (Map)map.get("data");
-
-		Gson gson = new Gson();
-		Champion jax = gson.fromJson(gson.toJson(map2.get("Jax")),Champion.class);
-		return jax;
+	public ChampionDto getJaxTest() throws Exception{
+		return riotAdapter.get(RiotRequests.CHAMPOION_BY_ID, RiotApiUrl.STATIC_DATA_V3_CHAMPION_BY_ID, Collections.singletonMap("id", 24L));
 	}
 
 

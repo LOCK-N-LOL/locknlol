@@ -11,7 +11,7 @@ import com.querydsl.core.types.dsl.PathInits;
 
 
 /**
- * QChampion is a Querydsl query type for Champion
+ * QChampion is a Querydsl query type for ChampionDto
  */
 @Generated("com.querydsl.codegen.EntitySerializer")
 public class QChampion extends EntityPathBase<Champion> {

@@ -11,7 +11,7 @@ import com.querydsl.core.types.dsl.PathInits;
 
 
 /**
- * QChampionPassive is a Querydsl query type for ChampionPassive
+ * QChampionPassive is a Querydsl query type for ChampionPassiveDto
  */
 @Generated("com.querydsl.codegen.EntitySerializer")
 public class QChampionPassive extends EntityPathBase<ChampionPassive> {

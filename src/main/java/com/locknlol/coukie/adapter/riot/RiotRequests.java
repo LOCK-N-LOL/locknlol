@@ -1,5 +1,7 @@
 package com.locknlol.coukie.adapter.riot;
 
+import com.locknlol.coukie.adapter.riot.dto.champion.ChampionDto;
+import com.locknlol.coukie.adapter.riot.dto.champion.ChampionListDto;
 import com.locknlol.coukie.adapter.riot.response.LolRecentMatchesResponse;
 import com.locknlol.coukie.adapter.riot.response.LolSummonerByNameResponse;
 
@@ -10,4 +12,6 @@ public class RiotRequests {
 
 	public static final RiotRequest<LolSummonerByNameResponse> SUMMONER_BY_NAME = RiotRequest.of(LolSummonerByNameResponse.class);
 	public static final RiotRequest<LolRecentMatchesResponse> RECENT_MATCHES = RiotRequest.of(LolRecentMatchesResponse.class);
+	public static final RiotRequest<ChampionListDto> CHAMPOIONS = RiotRequest.of(ChampionListDto.class);
+	public static final RiotRequest<ChampionDto> CHAMPOION_BY_ID = RiotRequest.of(ChampionDto.class);
 }

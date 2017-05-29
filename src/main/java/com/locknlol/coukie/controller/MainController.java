@@ -1,11 +1,13 @@
 package com.locknlol.coukie.controller;
 
+import com.locknlol.coukie.adapter.riot.dto.champion.ChampionDto;
 import com.locknlol.coukie.adapter.staticdatav3.StaticDataV3Adapter;
 import com.locknlol.coukie.domain.champion.Champion;
 import com.locknlol.coukie.domain.champion.ChampionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 /**
  * @author Haylie
@@ -23,13 +25,13 @@ public class MainController {
 
     @RequestMapping("/")
     public String main() {
-        saveJax();
         return "index";
     }
 
-    private void saveJax() {
-        Champion jax = staticDataV3Adapter.getJaxTest();
-        championRepository.save(jax);
-        jax.toString();
+    @ResponseBody()
+    @RequestMapping("/getJax")
+    private ChampionDto saveJax() throws Exception {
+        return staticDataV3Adapter.getJaxTest();
+
     }
 }
