@@ -14,7 +14,7 @@ import java.util.Map;
 @Setter
 public class ParticipantTimelineDto {
     private String lane;
-    private int participantId;
+    private Integer participantId;
     private Map<String, Double> csDiffPerMinDeltas;
     private Map<String, Double> goldPerMinDeltas;
     private Map<String, Double> xpDiffPerMinDeltas;

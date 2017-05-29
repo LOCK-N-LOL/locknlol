@@ -13,13 +13,13 @@ import java.util.List;
 @Setter
 public class ParticipantDto {
     private ParticipantStatsDto stats;
-    private int participantId;
+    private Integer participantId;
     private List<RuneDto> runes;
     private ParticipantTimelineDto timeline;
-    private int teamId;
-    private int spell2Id;
+    private Integer teamId;
+    private Integer spell2Id;
     private List<MasteryDto> masteries;
     private String highestAchievedSeasonTier;
-    private int spell1Id;
-    private int championId;
+    private Integer spell1Id;
+    private Integer championId;
 }

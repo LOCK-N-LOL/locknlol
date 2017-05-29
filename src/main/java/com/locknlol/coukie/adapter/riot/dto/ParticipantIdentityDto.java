@@ -12,5 +12,5 @@ import lombok.Setter;
 @Setter
 public class ParticipantIdentityDto {
     private PlayerDto player;
-    private int participantId;
+    private Integer participantId;
 }

@@ -1,5 +1,8 @@
-package com.locknlol.coukie.adapter.riot.dto;
+package com.locknlol.coukie.adapter.riot.response;
 
+import com.locknlol.coukie.adapter.riot.dto.ParticipantDto;
+import com.locknlol.coukie.adapter.riot.dto.ParticipantIdentityDto;
+import com.locknlol.coukie.adapter.riot.dto.TeamStatsDto;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,15 +15,15 @@ import java.util.List;
 
 @Getter
 @Setter
-public class MatchDto {
-    private int seasonId;
-    private int queueId;
+public class RiotMatchByMatchIdResponse {
+    private Integer seasonId;
+    private Integer queueId;
     private Long gameId;
     private List<ParticipantIdentityDto> participantIdentities;
     private String gameVersion;
     private String platformId;
     private String gameMode;
-    private int mapId;
+    private Integer mapId;
     private String gameType;
     private List<TeamStatsDto> teams;
     private List<ParticipantDto> participants;

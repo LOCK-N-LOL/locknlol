@@ -11,6 +11,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class TeamBansDto {
-    private int pickTurn;
-    private int championId;
+    private Integer pickTurn;
+    private Integer championId;
 }

@@ -16,18 +16,18 @@ public class TeamStatsDto {
     private boolean firstDragon;
     private boolean firstInhibitor;
     private List<TeamBansDto> bans;
-    private int baronKills;
+    private Integer baronKills;
     private boolean firstRiftHerald;
     private boolean firstBaron;
-    private int riftHeraldKills;
+    private Integer riftHeraldKills;
     private boolean firstBlood;
-    private int teamId;
+    private Integer teamId;
     private boolean firstTower;
-    private int vilemawKills;
-    private int inhibitorKills;
-    private int towerKills;
-    private int dominionVictoryScore;
+    private Integer vilemawKills;
+    private Integer inhibitorKills;
+    private Integer towerKills;
+    private Integer dominionVictoryScore;
     private String win;
-    private int dragonKills;
+    private Integer dragonKills;
 
 }

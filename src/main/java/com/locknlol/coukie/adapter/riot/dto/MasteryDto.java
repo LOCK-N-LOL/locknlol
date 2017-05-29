@@ -11,6 +11,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class MasteryDto {
-    private int masteryId;
-    private int rank;
+    private Integer masteryId;
+    private Integer rank;
 }

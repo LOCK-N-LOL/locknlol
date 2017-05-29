@@ -20,7 +20,7 @@ public class RiotAdapterParameter {
 		return requestParam;
 	}
 
-	public static Map<String, Object> matchByMatchId(Long matchId) {
+	public static Map<String, Object> matchesByMatchId(Long matchId) {
 		Map<String, Object> requestParam = new HashMap<>();
 		requestParam.put("matchId", matchId);
 		return requestParam;

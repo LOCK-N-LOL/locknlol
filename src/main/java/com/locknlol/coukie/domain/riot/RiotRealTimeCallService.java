@@ -4,8 +4,9 @@ import com.locknlol.coukie.adapter.RiotAdapter;
 import com.locknlol.coukie.adapter.riot.RiotAdapterParameter;
 import com.locknlol.coukie.adapter.riot.RiotApiUrl;
 import com.locknlol.coukie.adapter.riot.RiotRequests;
-import com.locknlol.coukie.adapter.riot.response.LolRecentMatchesResponse;
-import com.locknlol.coukie.adapter.riot.response.LolSummonerByNameResponse;
+import com.locknlol.coukie.adapter.riot.response.RiotMatchByMatchIdResponse;
+import com.locknlol.coukie.adapter.riot.response.RiotRecentMatchesResponse;
+import com.locknlol.coukie.adapter.riot.response.RiotSummonerByNameResponse;
 import com.locknlol.coukie.domain.riot.exception.LoLErrorCode;
 import com.locknlol.coukie.domain.riot.summoner.Summoner;
 import com.locknlol.coukie.domain.riot.summoner.SummonerFindService;
@@ -28,23 +29,16 @@ public class RiotRealTimeCallService {
 	@Autowired
 	private SummonerFindService summonerFindService;
 
-	public LolSummonerByNameResponse findSummonerByName(String summonerName) throws Exception {
+	public RiotSummonerByNameResponse findSummonerByName(String summonerName) throws Exception {
 		return adapter.get(RiotRequests.SUMMONER_BY_NAME, RiotApiUrl.SUMMONER, RiotAdapterParameter.summonerByName(summonerName));
 	}
 
-	public LolRecentMatchesResponse getRecentMatches(String summonerName) throws Exception {
+	public RiotRecentMatchesResponse getRecentMatches(String summonerName) throws Exception {
 		Long accountId = getAccountIdBySummonerName(summonerName);
 		return adapter.get(RiotRequests.RECENT_MATCHES, RiotApiUrl.RECENT_MATCHES_BY_ACCOUNTID,
 			RiotAdapterParameter.recentMatchByAccountId(accountId));
 	}
 
-	/**
-	 * api는 accoundId로 콜해야되는데 우리는 소환사 명 밖에 모름 아래에서는 api를 찔러서 가져온 다음에 다시 찔러야함
-	 * 일단 기본 정보는 쌓는 db 정도는 하는게 어떨지? 그냥 api 콜로 처리??
-	 * @param summonerName 소환사 명
-	 * @return accountId
-	 * @throws Exception
-	 */
 	private Long getAccountIdBySummonerName(String summonerName) throws Exception {
 		Summoner summonerInfo = summonerFindService.findBySummonerName(summonerName);
 		if (summonerInfo != null) {
@@ -52,7 +46,7 @@ public class RiotRealTimeCallService {
 		}
 
 		return Optional.ofNullable(findSummonerByName(summonerName))
-			.map(LolSummonerByNameResponse::getAccountId)
+			.map(RiotSummonerByNameResponse::getAccountId)
 			.orElseThrow(() -> new LoLException(LoLErrorCode.SUMMONER_NOT_FOUND));
 	}
 
@@ -63,11 +57,16 @@ public class RiotRealTimeCallService {
 		}
 
 		return Optional.ofNullable(findSummonerByName(summonerName))
-			.map(LolSummonerByNameResponse::getSummonerId)
+			.map(RiotSummonerByNameResponse::getSummonerId)
 			.orElseThrow(() -> new LoLException(LoLErrorCode.SUMMONER_NOT_FOUND));
 	}
 
 	public boolean checkSummonerAuthByRunes(String summonerName) {
 		return false;
 	}
+
+	public RiotMatchByMatchIdResponse getMatchByMatchId(Long matchId) throws Exception{
+		return adapter.get(RiotRequests.MATCH_BY_MATCHID, RiotApiUrl.MATCH_BY_MATCHID, RiotAdapterParameter.matchesByMatchId(matchId));
+	}
+
 }

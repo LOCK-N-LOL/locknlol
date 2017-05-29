@@ -4,7 +4,7 @@ import com.locknlol.coukie.adapter.RiotAdapter;
 import com.locknlol.coukie.adapter.riot.RiotAdapterParameter;
 import com.locknlol.coukie.adapter.riot.RiotApiUrl;
 import com.locknlol.coukie.adapter.riot.RiotRequests;
-import com.locknlol.coukie.adapter.riot.response.LolSummonerByNameResponse;
+import com.locknlol.coukie.adapter.riot.response.RiotSummonerByNameResponse;
 import com.locknlol.coukie.domain.riot.summoner.Summoner;
 import com.locknlol.coukie.domain.riot.summoner.SummonerFindService;
 import org.junit.Before;
@@ -29,7 +29,7 @@ public class RiotRealTimeCallServiceTest {
 	private RiotAdapter adapter;
 
 	private Summoner summoner;
-	private LolSummonerByNameResponse response;
+	private RiotSummonerByNameResponse response;
 
 	private static final String SUMMONER_NAME = "love";
 
@@ -38,7 +38,7 @@ public class RiotRealTimeCallServiceTest {
 		summoner = new Summoner();
 		summoner.setAccountId(1L);
 
-		response = new LolSummonerByNameResponse();
+		response = new RiotSummonerByNameResponse();
 		response.setAccountId(1L);
 	}
 

@@ -11,6 +11,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class RuneDto {
-    private int runeId;
-    private int rank;
+    private Integer runeId;
+    private Integer rank;
 }

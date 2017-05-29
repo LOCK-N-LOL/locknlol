@@ -9,7 +9,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class LolSummonerByNameResponse {
+public class RiotSummonerByNameResponse {
 	/**
 	 * 	ID of the summoner icon associated with the summoner.
 	 */

@@ -12,7 +12,7 @@ public enum RiotApiUrl {
 
 	SUMMONER("/lol/summoner/v3/summoners/by-name/{summonerName}", "소환사 정보", ApiKey.API_KEY_MUMU),
 	RECENT_MATCHES_BY_ACCOUNTID("/lol/match/v3/matchlists/by-account/{accountId}/recent", "최근 20 경기", ApiKey.API_KEY_KEV),
-	MATCH_DETAIL_INFO_BY_MATCH_ID("/lol/match/v3/matches/{matchId}", "해당 게임의 상세 정보", ApiKey.API_KEY_JBAM);
+	MATCH_BY_MATCHID("/lol/match/v3/matches/{matchId}", "해당 게임의 상세 정보", ApiKey.API_KEY_JBAM);
 
 	private final String url;
 	private final String description;
