@@ -8,9 +8,6 @@ import java.util.List;
 /**
  * Created by kev on 2017. 5. 25.
  */
-@Data
-@Entity
-@Table(name = "champions")
 public class Champion {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

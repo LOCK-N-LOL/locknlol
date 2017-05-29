@@ -7,9 +7,6 @@ import javax.persistence.*;
 /**
  * Created by kev on 2017. 5. 25.
  */
-@Data
-@Entity
-@Table(name = "champion_spells")
 public class ChampionSpell {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

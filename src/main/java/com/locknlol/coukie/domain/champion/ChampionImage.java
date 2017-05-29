@@ -9,6 +9,4 @@ import javax.persistence.Table;
 /**
  * Created by kev on 2017. 5. 25.
  */
-@Entity
-@Table(name = "champion_images")
 public class ChampionImage extends Image {}
