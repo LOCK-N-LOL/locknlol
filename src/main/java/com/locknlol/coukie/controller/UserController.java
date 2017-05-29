@@ -1,6 +1,6 @@
 package com.locknlol.coukie.controller;
 
-import com.locknlol.coukie.domain.Tier;
+import com.locknlol.coukie.domain.user.Tier;
 import com.locknlol.coukie.domain.user.User;
 import com.locknlol.coukie.domain.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +21,11 @@ public class UserController {
 	@RequestMapping(value = "/v1/member", method = RequestMethod.POST)
 	public User memberSave(@RequestBody User user) {
 		return userService.saveMember(user);
+	}
+
+	@RequestMapping(value = "/v1/member", method = RequestMethod.DELETE)
+	public void doing() {
+
 	}
 
 	@RequestMapping(value = "/v1/member/{tier}", method = RequestMethod.GET)
