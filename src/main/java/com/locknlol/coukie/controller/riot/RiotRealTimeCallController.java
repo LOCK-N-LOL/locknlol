@@ -28,4 +28,9 @@ public class RiotRealTimeCallController {
 	public LolRecentMatchesResponse getRecentMatches(@PathVariable String name) throws Exception {
 		return riotRealTimeCallService.getRecentMatches(name);
 	}
+
+	@RequestMapping(value = "/matches/{matchId}", method = RequestMethod.GET)
+	public  void getMatchByMatchId(@PathVariable Long matchId) throws Exception {
+
+	}
 }

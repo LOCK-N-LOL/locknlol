@@ -19,4 +19,10 @@ public class RiotAdapterParameter {
 		requestParam.put("accountId", accountId);
 		return requestParam;
 	}
+
+	public static Map<String, Object> matchByMatchId(Long matchId) {
+		Map<String, Object> requestParam = new HashMap<>();
+		requestParam.put("matchId", matchId);
+		return requestParam;
+ 	}
 }
