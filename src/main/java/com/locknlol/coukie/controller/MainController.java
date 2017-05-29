@@ -30,5 +30,6 @@ public class MainController {
     private void saveJax() {
         Champion jax = staticDataV3Adapter.getJaxTest();
         championRepository.save(jax);
+        jax.toString();
     }
 }
