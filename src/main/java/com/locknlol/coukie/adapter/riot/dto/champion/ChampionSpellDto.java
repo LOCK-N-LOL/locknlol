@@ -9,7 +9,6 @@ import lombok.Data;
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ChampionSpellDto {
-	private Long id;
 	private String name;
 	private String description;
 	private ChampionSpellImageDto image;

@@ -9,7 +9,6 @@ import lombok.Data;
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ChampionPassiveDto {
-	private Long id;
 	private String name;
 	private String description;
 	private ChampionPassiveImageDto image;

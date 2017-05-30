@@ -1,5 +1,6 @@
 package com.locknlol.coukie.adapter.riot.dto.champion;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 import java.util.Map;
@@ -11,7 +12,8 @@ import java.util.Map;
 @Data
 public class ChampionListDto {
     private Map<String, String> keys;
-    private Map<String, ChampionDto> data;
+    @JsonProperty("data")
+    private Map<String, ChampionDto> championMap;
     private String version;
     private String type;
     private String format;

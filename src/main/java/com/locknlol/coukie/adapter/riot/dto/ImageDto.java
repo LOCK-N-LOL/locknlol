@@ -8,7 +8,6 @@ import lombok.Data;
  */
 @Data
 public class ImageDto {
-    private Long id;
     private String full;
     private String sprite;
     private String group;

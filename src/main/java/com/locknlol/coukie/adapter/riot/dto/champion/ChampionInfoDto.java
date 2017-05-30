@@ -11,7 +11,6 @@ import javax.persistence.*;
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ChampionInfoDto {
-	private Long id;
 	private Long attack;
 	private Long defense;
 	private Long magic;
