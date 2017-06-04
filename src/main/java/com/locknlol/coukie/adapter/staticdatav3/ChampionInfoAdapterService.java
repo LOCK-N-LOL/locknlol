@@ -6,6 +6,7 @@ import com.locknlol.coukie.adapter.riot.RiotRequests;
 import com.locknlol.coukie.adapter.riot.dto.champion.ChampionDto;
 import com.locknlol.coukie.adapter.riot.dto.champion.ChampionListDto;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataRetrievalFailureException;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
@@ -23,12 +24,20 @@ public class ChampionInfoAdapterService {
 		this.riotAdapter = riotAdapter;
 	}
 
-	public ChampionDto getChampionById(int id) throws Exception {
-		return riotAdapter.get(RiotRequests.CHAMPOION_BY_ID, RiotApiUrl.STATIC_DATA_V3_CHAMPION_BY_ID, Collections.singletonMap("id", id));
+	public ChampionDto getChampionById(int id) {
+		try {
+			return riotAdapter.get(RiotRequests.CHAMPOION_BY_ID, RiotApiUrl.STATIC_DATA_V3_CHAMPION_BY_ID, Collections.singletonMap("id", id));
+		} catch (Exception e) {
+			throw new DataRetrievalFailureException("Cannot find a champion: championId="+id, e);
+		}
 	}
 
-	public ChampionListDto getAllChampion() throws Exception {
-		return riotAdapter.get(RiotRequests.CHAMPOIONS, RiotApiUrl.STATIC_DATA_V3_CHAMPION_ALL);
+	public ChampionListDto getAllChampion() {
+		try {
+			return riotAdapter.get(RiotRequests.CHAMPOIONS, RiotApiUrl.STATIC_DATA_V3_CHAMPION_ALL);
+		} catch (Exception e) {
+			throw new DataRetrievalFailureException("Cannot find champions", e);
+		}
 	}
 
 
