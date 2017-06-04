@@ -2,7 +2,6 @@ package com.locknlol.coukie.domain.riot;
 
 import com.locknlol.coukie.adapter.RiotAdapter;
 import com.locknlol.coukie.adapter.riot.RiotAdapterParameter;
-import com.locknlol.coukie.adapter.riot.RiotApiUrl;
 import com.locknlol.coukie.adapter.riot.RiotRequests;
 import com.locknlol.coukie.adapter.riot.response.RiotSummonerByNameResponse;
 import com.locknlol.coukie.domain.riot.summoner.Summoner;
@@ -48,19 +47,19 @@ public class RiotRealTimeCallServiceTest {
 
 		riotRealTimeCallService.getRecentMatches(SUMMONER_NAME);
 
-		verify(adapter, never()).get(RiotRequests.SUMMONER_BY_NAME, RiotApiUrl.RECENT_MATCHES_BY_ACCOUNTID,
+		verify(adapter, never()).get(RiotRequests.SUMMONER_BY_NAME,
 			RiotAdapterParameter.summonerByName(SUMMONER_NAME));
 	}
 
 	@Test
 	public void try_api_call_when_summnoer_info_not_in_db() throws Exception {
 		when(summonerFindService.findBySummonerName(SUMMONER_NAME)).thenReturn(null);
-		when(adapter.get(RiotRequests.SUMMONER_BY_NAME, RiotApiUrl.SUMMONER, RiotAdapterParameter.summonerByName(SUMMONER_NAME))).thenReturn(response);
+		when(adapter.get(RiotRequests.SUMMONER_BY_NAME, RiotAdapterParameter.summonerByName(SUMMONER_NAME))).thenReturn(response);
 
 		riotRealTimeCallService.getRecentMatches(SUMMONER_NAME);
 
-		verify(adapter).get(RiotRequests.SUMMONER_BY_NAME, RiotApiUrl.SUMMONER, RiotAdapterParameter.summonerByName(SUMMONER_NAME));
-		verify(adapter).get(RiotRequests.RECENT_MATCHES, RiotApiUrl.RECENT_MATCHES_BY_ACCOUNTID, RiotAdapterParameter.recentMatchByAccountId(
+		verify(adapter).get(RiotRequests.SUMMONER_BY_NAME, RiotAdapterParameter.summonerByName(SUMMONER_NAME));
+		verify(adapter).get(RiotRequests.RECENT_MATCHES, RiotAdapterParameter.recentMatchByAccountId(
 			response.getAccountId()));
 	}
 }

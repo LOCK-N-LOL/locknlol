@@ -11,7 +11,7 @@ import java.util.List;
  */
 @Getter
 @Setter
-public class RiotRecentMatchesResponse {
+public class RiotMatchResponse {
 
 	private List<MatchReferenceDto> matches;
 	private Integer totalGames;

@@ -1,7 +1,7 @@
 package com.locknlol.coukie.controller.riot;
 
 import com.locknlol.coukie.adapter.riot.response.RiotMatchByMatchIdResponse;
-import com.locknlol.coukie.adapter.riot.response.RiotRecentMatchesResponse;
+import com.locknlol.coukie.adapter.riot.response.RiotMatchResponse;
 import com.locknlol.coukie.adapter.riot.response.RiotSummonerByNameResponse;
 import com.locknlol.coukie.domain.riot.RiotRealTimeCallService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,18 +20,23 @@ public class RiotRealTimeCallController {
 	@Autowired
 	private RiotRealTimeCallService riotRealTimeCallService;
 
-	@RequestMapping(value = "/summoner/by-name/{name}", method = RequestMethod.GET)
-	public RiotSummonerByNameResponse findSummonerByName(@PathVariable String name) throws Exception{
-		return riotRealTimeCallService.findSummonerByName(name);
+	@RequestMapping(value = "/summoner/by-name/{summonerName}", method = RequestMethod.GET)
+	public RiotSummonerByNameResponse findSummonerByName(@PathVariable String summonerName) {
+		return riotRealTimeCallService.getSummonerByName(summonerName);
 	}
 
-	@RequestMapping(value = "/recent/matches/{name}", method = RequestMethod.GET)
-	public RiotRecentMatchesResponse getRecentMatches(@PathVariable String name) throws Exception {
-		return riotRealTimeCallService.getRecentMatches(name);
+	@RequestMapping(value = "/recent/matches/{summonerName}", method = RequestMethod.GET)
+	public RiotMatchResponse getRecentMatches(@PathVariable String summonerName) {
+		return riotRealTimeCallService.getRecentMatches(summonerName);
 	}
 
 	@RequestMapping(value = "/matches/{matchId}", method = RequestMethod.GET)
-	public RiotMatchByMatchIdResponse getMatchByMatchId(@PathVariable Long matchId) throws Exception {
+	public RiotMatchByMatchIdResponse getMatchByMatchId(@PathVariable Long matchId) {
 		return riotRealTimeCallService.getMatchByMatchId(matchId);
+	}
+
+	@RequestMapping(value = "/all/matches/{summonerName}", method = RequestMethod.GET)
+	public RiotMatchResponse getAllMatches(@PathVariable String summonerName) {
+		return riotRealTimeCallService.getAllMatches(summonerName);
 	}
 }

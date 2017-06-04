@@ -5,9 +5,20 @@ package com.locknlol.coukie.adapter.riot;
  */
 public interface RiotRequest<Response> {
 
+	RiotApiUrl getUrl();
 	Class<Response> getResponseType();
 
-	static <RES> RiotRequest<RES> of(Class<RES> responseType) {
-		return () -> responseType;
+	static <Response> RiotRequest<Response> of(RiotApiUrl url, Class<Response> responseType) {
+		return new RiotRequest<Response>() {
+			@Override
+			public RiotApiUrl getUrl() {
+				return url;
+			}
+
+			@Override
+			public Class<Response> getResponseType() {
+				return responseType;
+			}
+		};
 	}
 }

@@ -7,17 +7,17 @@ import lombok.Getter;
  * Created by Oscar on 2017. 5. 28..
  */
 @Getter
-public class LoLException extends RuntimeException {
+public class RiotException extends RuntimeException {
 
 	private final ErrorCode errorCode;
 
-	public LoLException(ErrorCode errorCode) {
+	public RiotException(ErrorCode errorCode) {
 		super(errorCode.getCause());
 		this.errorCode = errorCode;
 	}
 
-	public LoLException(ErrorCode errorCode, Throwable cause) {
-		super(cause);
+	public RiotException(ErrorCode errorCode, Throwable cause) {
+		super(errorCode.getCause(), cause);
 		this.errorCode = errorCode;
 	}
 }

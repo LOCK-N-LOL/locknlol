@@ -12,10 +12,11 @@ import java.util.Map;
 public class RiotUrlBuilder {
 
 	private static final String DOMAIN = "https://kr.api.riotgames.com";
+	private static final String API_KEY = "api_key";
 
 	public String buildUrl(RiotApiUrl url, Map<String, Object> requestParam) {
 		UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(DOMAIN + url.getUrl());
-		builder.queryParam("api_key", url.getKey());
+		builder.queryParam(API_KEY, url.getKey());
 
 		requestParam.entrySet().forEach(
 			each -> builder.queryParam(each.getKey(), each.getValue())
