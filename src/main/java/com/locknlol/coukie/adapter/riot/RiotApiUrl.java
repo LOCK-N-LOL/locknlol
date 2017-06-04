@@ -16,7 +16,9 @@ public enum RiotApiUrl {
 	STATIC_DATA_V3_CHAMPION_ALL("/lol/static-data/v3/champions?champListData=all", "모든 챔피언 정보", ApiKey.API_KEY_KEV),
 	STATIC_DATA_V3_CHAMPION_BY_ID("/lol/static-data/v3/champions/{id}?champData=all", "해당 아이디의 챔피언 정보", ApiKey.API_KEY_KEV),
 	STATIC_DATA_V3_ITEMS("/lol/static-data/v3/items?itemListData=all&tags=all", "모든 아이템 정보", ApiKey.API_KEY_MUMU),
-	STATIC_DATA_V3_ITEM_BY_ID("/lol/static-data/v3/items/{id}?itemData=all&tags=all", "해당 아이디의 아이템 정보", ApiKey.API_KEY_MUMU);
+	STATIC_DATA_V3_ITEM_BY_ID("/lol/static-data/v3/items/{id}?itemData=all&tags=all", "해당 아이디의 아이템 정보", ApiKey.API_KEY_MUMU),
+	STATIC_DATA_V3_SUMMONER_SPELLS("/lol/static-data/v3/summoner-spells?spellListData=all&tags=all", "모든 스펠 정보", ApiKey.API_KEY_JBAM),
+	STATIC_DATA_V3_SUMMONER_SPELL_BY_ID("/lol/static-data/v3/items/{id}?spellData=all&tags=all", "해당 아이디의 스펠 정보", ApiKey.API_KEY_JBAM);
 
 
 	private final String url;
