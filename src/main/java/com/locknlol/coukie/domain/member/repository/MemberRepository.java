@@ -4,5 +4,5 @@ import com.locknlol.coukie.domain.member.Member;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface MemberRepository extends JpaRepository<Member, Long> {
-	public Member findByEmailAndPassword(String email , String password);
+	Member findByEmailAndPassword(String email, String password);
 }

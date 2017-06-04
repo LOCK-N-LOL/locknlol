@@ -5,6 +5,7 @@ import com.locknlol.coukie.domain.member.repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -16,7 +17,9 @@ public class MemberService {
 	@Autowired
 	private MemberRepository memberRepository;
 
-	public Member saveUser(Member member) {
+	public Member save(Member member) {
+		member.setCreatedAt(new Date());
+		member.setModifiedAt(new Date());
 		if (member.getEmail() != null && member.getPassword() != null) {
 			return memberRepository.save(member);
 		}
@@ -32,16 +35,15 @@ public class MemberService {
 		return memberRepository.findOne(id);
 	}
 
-	public void deleteUser(Member member) {
-		memberRepository.delete(member.getId());
+	public void deleteById(Member member) {
+		memberRepository.delete(member);
 	}
 
 	public boolean signInUser(Member member) {
 		Member member1 = memberRepository.findByEmailAndPassword(member.getEmail(), member.getPassword());
-		if(member1 != null){
+		if (member1 != null) {
 			return true;
-		}
-		else{
+		} else {
 			return false;
 		}
 	}

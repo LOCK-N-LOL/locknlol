@@ -18,35 +18,35 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 
-	// add (1)
+	// create
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public Member saveUser(@RequestBody Member member) {
-		return memberService.saveUser(member);
+		return memberService.save(member);
 	}
 
-	// read (all)
+	// read
 	@RequestMapping(value = "/list")
 	@ResponseBody
 	public List<Member> findAll() {
 		return memberService.findAll();
 	}
 
-	// read (1)
+	// read
 	@RequestMapping(value = "/{id}")
 	@ResponseBody
 	public Member find(@PathVariable Long id) {
 		return memberService.findById(id);
 	}
 
-	// update (1)
+	// update
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
 	public Member update(@RequestBody Member member) {
-		return memberService.saveUser(member);
+		return memberService.save(member);
 	}
 
-	// delete (1)
+	// delete
 	@RequestMapping(value = "/delete", method = RequestMethod.DELETE)
 	public void delete(@RequestBody Member member) {
-		memberService.deleteUser(member);
+		memberService.deleteById(member);
 	}
 }

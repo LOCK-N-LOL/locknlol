@@ -2,10 +2,8 @@ package com.locknlol.coukie.controller.member.authentication;
 
 import com.locknlol.coukie.domain.member.Member;
 import com.locknlol.coukie.domain.member.service.MemberService;
-import javafx.geometry.Pos;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -27,7 +25,7 @@ public class MemberAuthController {
 
 	@RequestMapping(value = "/signup/new", method = RequestMethod.POST)
 	public String signupNew(Member member) {
-		if (memberService.saveUser(member) == null) {
+		if (memberService.save(member) == null) {
 			return "/member/signup/form";
 		}
 		return "/member/signin/form";
@@ -39,8 +37,8 @@ public class MemberAuthController {
 	}
 
 	@RequestMapping(value = "/signin", method = RequestMethod.POST)
-	public String signInAction(Member member){
-		if(memberService.signInUser(member)){
+	public String signInAction(Member member) {
+		if (memberService.signInUser(member)) {
 			return "redirect:/hello";
 		}
 		return signInForm();
