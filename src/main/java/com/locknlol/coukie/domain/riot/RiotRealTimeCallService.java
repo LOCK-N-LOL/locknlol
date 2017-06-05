@@ -1,5 +1,6 @@
 package com.locknlol.coukie.domain.riot;
 
+import com.locknlol.coukie.adapter.riot.response.RiotLeaguesBySummonerIdResponse;
 import com.locknlol.coukie.adapter.riot.response.RiotMatchByMatchIdResponse;
 import com.locknlol.coukie.adapter.riot.response.RiotMatchResponse;
 import com.locknlol.coukie.adapter.riot.response.RiotSummonerByNameResponse;
@@ -39,6 +40,10 @@ public class RiotRealTimeCallService {
 
 	public RiotMatchByMatchIdResponse getMatchByMatchId(Long matchId) {
 		return riotAdapterService.getMatchByMatchId(matchId);
+	}
+
+	public RiotLeaguesBySummonerIdResponse getLeaguesBySummonerId(Long summonerId) {
+		return riotAdapterService.getAllLeaguesBySummonerId(summonerId);
 	}
 
 	private Long getSummonerIdBySummonerName(String summonerName) {

@@ -1,5 +1,6 @@
 package com.locknlol.coukie.controller.riot;
 
+import com.locknlol.coukie.adapter.riot.response.RiotLeaguesBySummonerIdResponse;
 import com.locknlol.coukie.adapter.riot.response.RiotMatchByMatchIdResponse;
 import com.locknlol.coukie.adapter.riot.response.RiotMatchResponse;
 import com.locknlol.coukie.adapter.riot.response.RiotSummonerByNameResponse;
@@ -38,5 +39,10 @@ public class RiotRealTimeCallController {
 	@RequestMapping(value = "/all/matches/{summonerName}", method = RequestMethod.GET)
 	public RiotMatchResponse getAllMatches(@PathVariable String summonerName) {
 		return riotRealTimeCallService.getAllMatches(summonerName);
+	}
+
+	@RequestMapping(value = "/leagues/by-summoner/{summonerId}" , method = RequestMethod.GET)
+	public RiotLeaguesBySummonerIdResponse getAllLeaguesBySummonerId(@PathVariable Long summonerId) {
+		return riotRealTimeCallService.getLeaguesBySummonerId(summonerId);
 	}
 }

@@ -31,4 +31,10 @@ public class RiotAdapterParameter {
 		requestParam.put("accountId", accountId);
 		return requestParam;
 	}
+
+	public static Map<String, Object> AllLeaguesBySummonerId(Long summonerId) {
+		Map<String, Object> requestParam = new HashMap<>();
+		requestParam.put("summonerId", summonerId);
+		return requestParam;
+	}
 }

@@ -1,5 +1,6 @@
 package com.locknlol.coukie.adapter.riot;
 
+import com.locknlol.coukie.adapter.riot.response.RiotLeaguesBySummonerIdResponse;
 import com.locknlol.coukie.adapter.riot.response.RiotMatchByMatchIdResponse;
 import com.locknlol.coukie.adapter.riot.response.RiotMatchResponse;
 import com.locknlol.coukie.adapter.riot.response.RiotSummonerByNameResponse;
@@ -13,4 +14,5 @@ public class RiotRequests {
 	public static final RiotRequest<RiotMatchResponse> RECENT_MATCHES = RiotRequest.of(RiotApiUrl.RECENT_MATCHES_BY_ACCOUNTID, RiotMatchResponse.class);
 	public static final RiotRequest<RiotMatchByMatchIdResponse> MATCH_BY_MATCHID = RiotRequest.of(RiotApiUrl.MATCH_BY_MATCHID, RiotMatchByMatchIdResponse.class);
 	public static final RiotRequest<RiotMatchResponse> All_MATCHES = RiotRequest.of(RiotApiUrl.All_MATCH, RiotMatchResponse.class);
+	public static final RiotRequest<RiotLeaguesBySummonerIdResponse> ALL_LEAGUES = RiotRequest.of(RiotApiUrl.ALL_LEAGUES, RiotLeaguesBySummonerIdResponse.class);
 }

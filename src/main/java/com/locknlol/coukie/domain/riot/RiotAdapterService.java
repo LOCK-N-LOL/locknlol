@@ -3,6 +3,7 @@ package com.locknlol.coukie.domain.riot;
 import com.locknlol.coukie.adapter.RiotAdapter;
 import com.locknlol.coukie.adapter.riot.RiotAdapterParameter;
 import com.locknlol.coukie.adapter.riot.RiotRequests;
+import com.locknlol.coukie.adapter.riot.response.RiotLeaguesBySummonerIdResponse;
 import com.locknlol.coukie.adapter.riot.response.RiotMatchByMatchIdResponse;
 import com.locknlol.coukie.adapter.riot.response.RiotMatchResponse;
 import com.locknlol.coukie.adapter.riot.response.RiotSummonerByNameResponse;
@@ -35,5 +36,9 @@ public class RiotAdapterService {
 
 	public RiotMatchResponse getAllMatches(Long accountId) {
 		return riotAdapter.get(RiotRequests.All_MATCHES, RiotAdapterParameter.AllMatchsByAccountId(accountId));
+	}
+
+	public RiotLeaguesBySummonerIdResponse getAllLeaguesBySummonerId(Long summonerId) {
+		return riotAdapter.get(RiotRequests.ALL_LEAGUES, RiotAdapterParameter.AllMatchsByAccountId(summonerId));
 	}
 }
