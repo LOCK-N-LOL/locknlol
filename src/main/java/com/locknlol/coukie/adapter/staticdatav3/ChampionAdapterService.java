@@ -15,12 +15,12 @@ import java.util.Collections;
  * Created by kev on 2017. 5. 25.
  */
 @Service
-public class ChampionInfoAdapterService {
+public class ChampionAdapterService {
 
 	private final RiotAdapter riotAdapter;
 
 	@Autowired
-	public ChampionInfoAdapterService(RiotAdapter riotAdapter) {
+	public ChampionAdapterService(RiotAdapter riotAdapter) {
 		this.riotAdapter = riotAdapter;
 	}
 

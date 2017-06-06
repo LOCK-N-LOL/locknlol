@@ -2,6 +2,7 @@ package com.locknlol.coukie.domain;
 
 import static com.querydsl.core.types.PathMetadataFactory.*;
 
+import com.locknlol.coukie.domain.common.entity.Image;
 import com.querydsl.core.types.dsl.*;
 
 import com.querydsl.core.types.PathMetadata;

@@ -1,18 +1,27 @@
-package com.locknlol.coukie.domain.champion;
+package com.locknlol.coukie.domain.champion.entity;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 
 /**
  * Created by kev on 2017. 5. 25.
  */
+@Entity
+@Getter
+@Setter
 public class ChampionPassive {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
+
 	private String name;
+
+	@Lob
 	private String description;
+
+	@OneToOne
 	private ChampionPassiveImage image;
 
 
