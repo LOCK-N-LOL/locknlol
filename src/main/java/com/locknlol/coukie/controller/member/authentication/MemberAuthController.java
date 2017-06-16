@@ -25,7 +25,7 @@ public class MemberAuthController {
 
 	@RequestMapping(value = "/signup/new", method = RequestMethod.POST)
 	public String signupNew(Member member) {
-		if (memberService.save(member) == null) {
+		if (memberService.signUp(member) == null) {
 			return "/member/signup/form";
 		}
 		return "/member/signin/form";
@@ -38,7 +38,7 @@ public class MemberAuthController {
 
 	@RequestMapping(value = "/signin", method = RequestMethod.POST)
 	public String signInAction(Member member) {
-		if (memberService.signInUser(member)) {
+		if (memberService.signIn(member)) {
 			return "redirect:/hello";
 		}
 		return signInForm();

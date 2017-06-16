@@ -2,6 +2,7 @@ package com.locknlol.coukie.domain.member.service;
 
 import com.locknlol.coukie.domain.member.Member;
 import com.locknlol.coukie.domain.member.repository.MemberRepository;
+import com.locknlol.coukie.domain.member.security.MemberSecurityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,34 +18,45 @@ public class MemberService {
 	@Autowired
 	private MemberRepository memberRepository;
 
-	public Member save(Member member) {
-		member.setCreatedAt(new Date());
-		member.setModifiedAt(new Date());
-		if (member.getEmail() != null && member.getPassword() != null) {
-			return memberRepository.save(member);
-		}
+	@Autowired
+	private MemberSecurityService memberSecurityService;
 
-		return null;
+	public Member signUp(Member member) {
+		member = setCryptPassword(member);
+		return saveMember(member);
+		//validate
+//		if (member.getEmail() != null && member.getPassword() != null) {
+//			return memberRepository.save(member);
+//		}
 	}
 
 	public List<Member> findAll() {
 		return memberRepository.findAll();
 	}
 
-	public Member findById(Long id) {
-		return memberRepository.findOne(id);
-	}
-
 	public void deleteById(Member member) {
 		memberRepository.delete(member);
 	}
 
-	public boolean signInUser(Member member) {
-		Member member1 = memberRepository.findByEmailAndPassword(member.getEmail(), member.getPassword());
-		if (member1 != null) {
-			return true;
-		} else {
-			return false;
-		}
+	public boolean signIn(Member member) {
+		return confirmUserPassword(member);
+	}
+
+	private boolean confirmUserPassword(Member member){
+		Member savedMember = memberRepository.findByEmail(member.getEmail());
+		return memberSecurityService.confirmPassword(savedMember,member.getPassword());
+	}
+
+	private Member setCryptPassword(Member member){
+		String plainPassword = member.getPassword();
+		String cryptPassword = memberSecurityService.cryptPassword(plainPassword);
+		member.setPassword(cryptPassword);
+		return member;
+	}
+
+	private Member saveMember(Member member){
+		member.setCreatedAt(new Date());
+		member.setModifiedAt(new Date());
+		return memberRepository.save(member);
 	}
 }

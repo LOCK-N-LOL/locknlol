@@ -5,10 +5,12 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.persistence.Column;
 import java.util.Date;
 
 @Entity
-@Table(name = "member")
+@Table(name = "member" ,
+indexes = @Index(name = "IDX_MEMBER" , columnList = "email"))
 @Getter
 @Setter
 @EqualsAndHashCode(of = { "id" }, callSuper = false)
@@ -17,6 +19,7 @@ public class Member {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "id", nullable = false)
 	private Long id;
+
 
 	@Column(name = "email", nullable = false)
 	private String email;
