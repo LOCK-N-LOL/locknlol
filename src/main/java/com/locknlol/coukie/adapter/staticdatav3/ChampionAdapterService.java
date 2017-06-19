@@ -26,7 +26,7 @@ public class ChampionAdapterService {
 
 	public ChampionDto getChampionById(int id) {
 		try {
-			return riotAdapter.get(RiotRequests.CHAMPOION_BY_ID, RiotApiUrl.STATIC_DATA_V3_CHAMPION_BY_ID, Collections.singletonMap("id", id));
+			return riotAdapter.get(RiotRequests.CHAMPOION_BY_ID, Collections.singletonMap("id", id));
 		} catch (Exception e) {
 			throw new DataRetrievalFailureException("Cannot find a champion: championId="+id, e);
 		}
@@ -34,7 +34,7 @@ public class ChampionAdapterService {
 
 	public ChampionListDto getAllChampion() {
 		try {
-			return riotAdapter.get(RiotRequests.CHAMPOIONS, RiotApiUrl.STATIC_DATA_V3_CHAMPION_ALL);
+			return riotAdapter.get(RiotRequests.CHAMPOIONS);
 		} catch (Exception e) {
 			throw new DataRetrievalFailureException("Cannot find champions", e);
 		}

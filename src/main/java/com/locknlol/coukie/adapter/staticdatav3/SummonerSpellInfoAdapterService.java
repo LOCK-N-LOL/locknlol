@@ -27,7 +27,7 @@ public class SummonerSpellInfoAdapterService {
 
     public SummonerSpellDto getSummonerSpellById(int id) {
         try {
-            return riotAdapter.get(RiotRequests.SUMMONER_SPELL_BY_ID, RiotApiUrl.STATIC_DATA_V3_SUMMONER_SPELL_BY_ID, Collections.singletonMap("id", id));
+            return riotAdapter.get(RiotRequests.SUMMONER_SPELL_BY_ID, Collections.singletonMap("id", id));
         } catch (Exception e) {
             throw new DataRetrievalFailureException("Cannot find a summoner-spell: summoner-spell="+id, e);
         }
@@ -35,7 +35,7 @@ public class SummonerSpellInfoAdapterService {
 
     public SummonerSpellListDto getAllSummonerSpells() {
         try {
-            return riotAdapter.get(RiotRequests.SUMMONER_SPELLS, RiotApiUrl.STATIC_DATA_V3_SUMMONER_SPELLS);
+            return riotAdapter.get(RiotRequests.SUMMONER_SPELLS);
         } catch (Exception e) {
             throw new DataRetrievalFailureException("Cannot find summoner-spells", e);
         }

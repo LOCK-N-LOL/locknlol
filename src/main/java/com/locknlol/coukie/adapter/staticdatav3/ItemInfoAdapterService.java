@@ -27,7 +27,7 @@ public class ItemInfoAdapterService {
 
 	public ItemDto getItemById(int id) {
 		try {
-			return riotAdapter.get(RiotRequests.ITEM_BY_ID, RiotApiUrl.STATIC_DATA_V3_ITEM_BY_ID, Collections.singletonMap("id", id));
+			return riotAdapter.get(RiotRequests.ITEM_BY_ID, Collections.singletonMap("id", id));
 		} catch (Exception e) {
 			throw new DataRetrievalFailureException("Cannot find a item: itemId="+id, e);
 		}
@@ -35,7 +35,7 @@ public class ItemInfoAdapterService {
 
 	public ItemListDto getAllItems() {
 		try {
-			return riotAdapter.get(RiotRequests.ITEMS, RiotApiUrl.STATIC_DATA_V3_ITEMS);
+			return riotAdapter.get(RiotRequests.ITEMS);
 		} catch (Exception e) {
 			throw new DataRetrievalFailureException("Cannot find items", e);
 		}
