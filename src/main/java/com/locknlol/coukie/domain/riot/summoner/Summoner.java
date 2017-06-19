@@ -1,10 +1,13 @@
 package com.locknlol.coukie.domain.riot.summoner;
 
+import com.locknlol.coukie.adapter.riot.response.RiotSummonerByNameResponse;
 import com.locknlol.coukie.domain.common.CommonModel;
+import com.locknlol.coukie.domain.user.User;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Date;
 
 /**
  * Created by Oscar on 2017. 5. 28..
@@ -28,5 +31,18 @@ public class Summoner extends CommonModel{
 
 	@Column(name = "summonerId", updatable = false)
 	private Long summonerId;
+
+	@OneToOne
+	private User user;
+
+	public static Summoner convert(RiotSummonerByNameResponse response) {
+		Summoner summoner = new Summoner();
+		summoner.setAccountId(response.getAccountId());
+		summoner.setSummonerId(response.getSummonerId());
+		summoner.setSummonerName(response.getSummonerName());
+		summoner.setCreatedAt(new Date());
+		summoner.setCreatedBy("adapter_call");
+		return summoner;
+	}
 }
 

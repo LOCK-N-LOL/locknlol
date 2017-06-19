@@ -1,6 +1,7 @@
 package com.locknlol.coukie.domain.user;
 
 import com.locknlol.coukie.domain.common.CommonModel;
+import com.locknlol.coukie.domain.riot.summoner.Summoner;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -29,4 +30,8 @@ public class User extends CommonModel{
 
 	@Enumerated(value = EnumType.STRING)
 	private Tier tier;
+
+	@OneToOne
+	@JoinColumn(name = "summoner_idd")
+	private Summoner summoner;
 }
