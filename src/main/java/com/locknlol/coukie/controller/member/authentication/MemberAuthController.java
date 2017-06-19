@@ -7,6 +7,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Created by leetaejun on 2017. 5. 31..
  */
@@ -37,8 +42,12 @@ public class MemberAuthController {
 	}
 
 	@RequestMapping(value = "/signin", method = RequestMethod.POST)
-	public String signInAction(Member member) {
+	public String signInAction(Member member, HttpSession session) {
 		if (memberService.signIn(member)) {
+			Map<String,Object> map = new HashMap<>();
+			map.put("admin_id", "admin");
+			map.put("admin_name" , "유저");
+			session.setAttribute("admin",map);
 			return "redirect:/hello";
 		}
 		return signInForm();

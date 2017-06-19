@@ -21,7 +21,7 @@ public class MemberController {
 	// create
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public Member saveUser(@RequestBody Member member) {
-		return memberService.save(member);
+		return memberService.signUp(member);
 	}
 
 	// read
@@ -31,17 +31,10 @@ public class MemberController {
 		return memberService.findAll();
 	}
 
-	// read
-	@RequestMapping(value = "/{id}")
-	@ResponseBody
-	public Member find(@PathVariable Long id) {
-		return memberService.findById(id);
-	}
-
 	// update
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
 	public Member update(@RequestBody Member member) {
-		return memberService.save(member);
+		return memberService.signUp(member);
 	}
 
 	// delete
