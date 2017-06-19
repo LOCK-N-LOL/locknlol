@@ -10,11 +10,7 @@ import java.io.IOException;
  */
 @Component
 public class JsonParser implements Parser {
-    private ObjectMapper mapper;
-
-    public JsonParser(ObjectMapper mapper) {
-        this.mapper = mapper;
-    }
+    private ObjectMapper mapper = new ObjectMapper();
 
     @Override
     public <T> T parse(String targetData, Class<T> targetClazz) throws IOException{
