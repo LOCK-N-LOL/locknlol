@@ -7,7 +7,6 @@ import com.locknlol.coukie.adapter.riot.response.RiotLeaguesBySummonerIdResponse
 import com.locknlol.coukie.adapter.riot.response.RiotMatchByMatchIdResponse;
 import com.locknlol.coukie.adapter.riot.response.RiotMatchResponse;
 import com.locknlol.coukie.adapter.riot.response.RiotSummonerByNameResponse;
-import com.locknlol.coukie.domain.riot.summoner.SummonerSaveService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,8 +18,7 @@ public class RiotAdapterService {
 
 	@Autowired
 	private RiotAdapter riotAdapter;
-	@Autowired
-	private SummonerSaveService summonerSaveService;
+
 
 	public RiotSummonerByNameResponse getSummonerByName(String summonerName) {
 		return riotAdapter.get(RiotRequests.SUMMONER_BY_NAME, RiotAdapterParameter.summonerByName(summonerName));

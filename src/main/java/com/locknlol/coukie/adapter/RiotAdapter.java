@@ -1,6 +1,6 @@
 package com.locknlol.coukie.adapter;
 
-import com.locknlol.coukie.adapter.parser.RiotParser;
+import com.locknlol.coukie.adapter.parser.JsonParser;
 import com.locknlol.coukie.adapter.riot.RiotRequest;
 import com.locknlol.coukie.adapter.riot.RiotUrlBuilder;
 import com.locknlol.coukie.domain.riot.exception.RiotErrorCode;
@@ -20,7 +20,7 @@ import java.util.Map;
 @Component
 public class RiotAdapter extends Adapter {
 	@Autowired
-	private RiotParser riotParser;
+	private JsonParser riotParser;
 	@Autowired
 	private RestTemplate restTemplate;
 	@Autowired
