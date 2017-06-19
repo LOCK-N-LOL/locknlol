@@ -14,7 +14,8 @@ public enum RiotApiUrl {
 	RECENT_MATCHES_BY_ACCOUNTID("/lol/match/v3/matchlists/by-account/{accountId}/recent", "최근 20 경기"),
 	MATCH_BY_MATCHID("/lol/match/v3/matches/{matchId}", "해당 게임의 상세 정보"),
 	All_MATCH("/lol/match/v3/matchlists/by-account/{accountId}", "시즌별 모든 랭크 게임 정보"),
-	ALL_LEAGUES(" /lol/league/v3/leagues/by-summoner/{summonerId}", "리그전 정보");
+	ALL_LEAGUES("/lol/league/v3/leagues/by-summoner/{summonerId}", "리그전 정보"),
+	RUNE_PAGES("/lol/platform/v3/runes/by-summoner/{summonerId}", "룬 페이지 정보");
 
 	private final String url;
 	private final String description;

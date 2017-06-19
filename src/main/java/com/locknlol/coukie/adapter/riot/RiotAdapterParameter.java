@@ -8,31 +8,25 @@ import java.util.Map;
  */
 public class RiotAdapterParameter {
 
-	public static Map<String, Object> summonerByName(String summonerName) {
+	public static Map<String, Object> getSummonerNameParam(String summonerName) {
 		Map<String, Object> requestParam = new HashMap<>();
 		requestParam.put("summonerName", summonerName);
 		return requestParam;
 	}
 
-	public static Map<String, Object> recentMatchByAccountId(Long accountId) {
+	public static Map<String, Object> getAccountIdParam(Long accountId) {
 		Map<String, Object> requestParam = new HashMap<>();
 		requestParam.put("accountId", accountId);
 		return requestParam;
 	}
 
-	public static Map<String, Object> matchesByMatchId(Long matchId) {
+	public static Map<String, Object> getMatchIdParam(Long matchId) {
 		Map<String, Object> requestParam = new HashMap<>();
 		requestParam.put("matchId", matchId);
 		return requestParam;
  	}
 
-	public static Map<String, Object> AllMatchsByAccountId(Long accountId) {
-		Map<String, Object> requestParam = new HashMap<>();
-		requestParam.put("accountId", accountId);
-		return requestParam;
-	}
-
-	public static Map<String, Object> AllLeaguesBySummonerId(Long summonerId) {
+	public static Map<String, Object> getSummonerId(Long summonerId) {
 		Map<String, Object> requestParam = new HashMap<>();
 		requestParam.put("summonerId", summonerId);
 		return requestParam;

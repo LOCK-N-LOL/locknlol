@@ -1,5 +1,6 @@
 package com.locknlol.coukie.domain.riot;
 
+import com.locknlol.coukie.adapter.riot.dto.rune.RiotRunePagesResponse;
 import com.locknlol.coukie.adapter.riot.response.RiotLeaguesBySummonerIdResponse;
 import com.locknlol.coukie.adapter.riot.response.RiotMatchByMatchIdResponse;
 import com.locknlol.coukie.adapter.riot.response.RiotMatchResponse;
@@ -49,7 +50,7 @@ public class RiotRealTimeCallService {
 	private Long getSummonerIdBySummonerName(String summonerName) {
 		Summoner summonerInfo = summonerFindService.findBySummonerName(summonerName);
 		if (summonerInfo != null) {
-			return summonerInfo.getId();
+			return summonerInfo.getSummonerId();
 		}
 
 		RiotSummonerByNameResponse response = getSummonerByName(summonerName);
@@ -86,5 +87,10 @@ public class RiotRealTimeCallService {
 	private void saveSummoner(RiotSummonerByNameResponse response) {
 		Optional.of(response)
 			.ifPresent(res -> summonerSaveService.save(res));
+	}
+
+	public RiotRunePagesResponse getRunePagesDetailInfo(String summonerName) {
+		Long summonerId = getSummonerIdBySummonerName(summonerName);
+		return riotAdapterService.getRunePagesDetailInfo(summonerId);
 	}
 }

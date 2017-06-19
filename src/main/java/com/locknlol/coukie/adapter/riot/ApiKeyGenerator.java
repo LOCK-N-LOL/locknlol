@@ -17,7 +17,7 @@ public class ApiKeyGenerator {
 	private static final String KEV_KEY = "RGAPI-2056f7ec-01fa-4edc-a7d7-d618d663db74";
 	private static final String JBAM_KEY = "RGAPI-57969e80-fe51-4674-bfc7-14c0cdd69617";
 
-	private static final int EACH_KEY_LIMIT_CALL = 50;
+	private static final int EACH_KEY_LIMIT_CALL = 10;
 
 	private ApiKeyGenerator() {
 		queue = new LinkedList<>();
@@ -42,8 +42,10 @@ public class ApiKeyGenerator {
 	}
 
 	private void keyChange() {
-		String currentKey = queue.poll();
-		queue.add(currentKey);
+		synchronized (keyObject) {
+			String currentKey = queue.poll();
+			queue.add(currentKey);
+		}
 		setZero();
 	}
 
@@ -67,4 +69,6 @@ public class ApiKeyGenerator {
 	protected Queue<String> getQueue() {
 		return queue;
 	}
+
+	private Object keyObject = new Object();
 }
