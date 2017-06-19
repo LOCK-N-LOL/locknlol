@@ -1,4 +1,4 @@
-package com.locknlol.coukie.adapter.parser;
+package com.locknlol.coukie.domain.common.parser;
 
 import java.io.IOException;
 

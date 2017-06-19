@@ -1,11 +1,9 @@
-package com.locknlol.coukie.domain.riot;
+package com.locknlol.coukie.domain.riot.summoner;
 
 import com.locknlol.coukie.adapter.riot.response.RiotSummonerByNameResponse;
+import com.locknlol.coukie.domain.riot.RiotAdapterService;
 import com.locknlol.coukie.domain.riot.exception.RiotErrorCode;
 import com.locknlol.coukie.domain.riot.exception.RiotException;
-import com.locknlol.coukie.domain.riot.summoner.Summoner;
-import com.locknlol.coukie.domain.riot.summoner.SummonerFindService;
-import com.locknlol.coukie.domain.riot.summoner.SummonerSaveService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

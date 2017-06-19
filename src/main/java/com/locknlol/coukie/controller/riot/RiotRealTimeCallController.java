@@ -4,9 +4,9 @@ import com.locknlol.coukie.adapter.riot.response.RiotLeaguesBySummonerIdResponse
 import com.locknlol.coukie.adapter.riot.response.RiotMatchByMatchIdResponse;
 import com.locknlol.coukie.adapter.riot.response.RiotMatchResponse;
 import com.locknlol.coukie.adapter.riot.response.RiotSummonerByNameResponse;
-import com.locknlol.coukie.domain.riot.RiotLeagueService;
-import com.locknlol.coukie.domain.riot.RiotMatchService;
-import com.locknlol.coukie.domain.riot.RiotSummonerService;
+import com.locknlol.coukie.domain.riot.league.RiotLeagueService;
+import com.locknlol.coukie.domain.riot.match.RiotMatchService;
+import com.locknlol.coukie.domain.riot.summoner.RiotSummonerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;

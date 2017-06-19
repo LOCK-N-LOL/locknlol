@@ -1,6 +1,7 @@
-package com.locknlol.coukie.domain.riot;
+package com.locknlol.coukie.domain.riot.league;
 
 import com.locknlol.coukie.adapter.riot.response.RiotLeaguesBySummonerIdResponse;
+import com.locknlol.coukie.domain.riot.RiotAdapterService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

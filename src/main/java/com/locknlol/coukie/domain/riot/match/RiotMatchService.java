@@ -1,7 +1,9 @@
-package com.locknlol.coukie.domain.riot;
+package com.locknlol.coukie.domain.riot.match;
 
 import com.locknlol.coukie.adapter.riot.response.RiotMatchByMatchIdResponse;
 import com.locknlol.coukie.adapter.riot.response.RiotMatchResponse;
+import com.locknlol.coukie.domain.riot.RiotAdapterService;
+import com.locknlol.coukie.domain.riot.summoner.RiotSummonerService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

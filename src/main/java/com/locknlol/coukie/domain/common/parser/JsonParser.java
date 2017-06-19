@@ -1,4 +1,4 @@
-package com.locknlol.coukie.adapter.parser;
+package com.locknlol.coukie.domain.common.parser;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Component;
