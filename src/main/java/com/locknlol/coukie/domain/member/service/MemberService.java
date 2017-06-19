@@ -24,10 +24,6 @@ public class MemberService {
 	public Member signUp(Member member) {
 		member = setCryptPassword(member);
 		return saveMember(member);
-		//validate
-//		if (member.getEmail() != null && member.getPassword() != null) {
-//			return memberRepository.save(member);
-//		}
 	}
 
 	public List<Member> findAll() {
@@ -42,19 +38,19 @@ public class MemberService {
 		return confirmUserPassword(member);
 	}
 
-	private boolean confirmUserPassword(Member member){
+	private boolean confirmUserPassword(Member member) {
 		Member savedMember = memberRepository.findByEmail(member.getEmail());
-		return memberSecurityService.confirmPassword(savedMember,member.getPassword());
+		return memberSecurityService.confirmPassword(savedMember, member.getPassword());
 	}
 
-	private Member setCryptPassword(Member member){
+	private Member setCryptPassword(Member member) {
 		String plainPassword = member.getPassword();
 		String cryptPassword = memberSecurityService.cryptPassword(plainPassword);
 		member.setPassword(cryptPassword);
 		return member;
 	}
 
-	private Member saveMember(Member member){
+	private Member saveMember(Member member) {
 		member.setCreatedAt(new Date());
 		member.setModifiedAt(new Date());
 		return memberRepository.save(member);

@@ -1,4 +1,4 @@
-package com.locknlol.coukie.domain.annotation;
+package com.locknlol.coukie.domain.member.configuration;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -10,6 +10,6 @@ import java.lang.annotation.Target;
  */
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface LoginRequest {
+public @interface SessionLogin {
 
 }

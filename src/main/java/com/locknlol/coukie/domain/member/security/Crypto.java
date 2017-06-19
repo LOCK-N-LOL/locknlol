@@ -10,39 +10,33 @@ import java.security.SecureRandom;
 import java.security.spec.InvalidKeySpecException;
 import java.security.spec.KeySpec;
 
-/**
- * Created by coupang on 2017. 6. 16..
- */
 public class Crypto {
 
-    private static final SecureRandom RANDOM = new SecureRandom();
+	private static final SecureRandom RANDOM = new SecureRandom();
 
-    public static final int SALT_LENGTH = 32;
-    public static final int KEY_LENGTH = 256;
-    public static final String ALGORITHM_PBKDF = "PBKDF2WithHmacSHA256";
+	public static final int SALT_LENGTH = 32;
+	public static final int KEY_LENGTH = 256;
+	public static final String ALGORITHM_PBKDF = "PBKDF2WithHmacSHA256";
 
-    public static byte[] createSalt() {
+	public static byte[] createSalt() {
+		byte[] salt = new byte[SALT_LENGTH];
+		RANDOM.nextBytes(salt);
+		return salt;
+	}
 
-        byte[] salt = new byte[SALT_LENGTH];
-        RANDOM.nextBytes(salt);
+	// PBKDF2 암호화 : https://en.wikipedia.org/wiki/PBKDF2
+	public static String pbkdf2(String password) throws InvalidKeySpecException, NoSuchAlgorithmException {
+		return pbkdf2(password, createSalt());
+	}
 
-        return salt;
-    }
+	public static String pbkdf2(String password, byte[] salt) throws InvalidKeySpecException, NoSuchAlgorithmException {
+		BASE64Encoder encoder = new BASE64Encoder();
 
-    public static String cryptPassword2(String password) throws InvalidKeySpecException, NoSuchAlgorithmException {
+		SecretKeyFactory keyFactory = SecretKeyFactory.getInstance(ALGORITHM_PBKDF);
+		KeySpec pdkdf2 = new PBEKeySpec(password.toCharArray(), salt, password.length() % 10 + 1, KEY_LENGTH);
+		SecretKey key = keyFactory.generateSecret(pdkdf2);
 
-        return cryptPassword2(password, createSalt());
-    }
-
-    public static String cryptPassword2(String password, byte[] salt) throws InvalidKeySpecException, NoSuchAlgorithmException {
-
-        BASE64Encoder encoder = new BASE64Encoder();
-
-        SecretKeyFactory keyFactory = SecretKeyFactory.getInstance(ALGORITHM_PBKDF);
-        KeySpec pdkdf2 = new PBEKeySpec(password.toCharArray(), salt, password.length() % 10 + 1, KEY_LENGTH);
-        SecretKey key = keyFactory.generateSecret(pdkdf2);
-
-        return String.format("%s:%s", encoder.encode(salt), encoder.encode(key.getEncoded()));
-    }
+		return String.format("%s:%s", encoder.encode(salt), encoder.encode(key.getEncoded()));
+	}
 
 }

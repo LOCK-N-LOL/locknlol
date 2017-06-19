@@ -1,6 +1,6 @@
 package com.locknlol.coukie.controller;
 
-import com.locknlol.coukie.domain.annotation.LoginRequest;
+import com.locknlol.coukie.domain.member.configuration.SessionLogin;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,7 +14,7 @@ public class GreetingController {
         void 일 때, RequestMapping name hbs 매핑
      */
     @RequestMapping("/greeting")
-    @LoginRequest
+    @SessionLogin
     public void greeting(Model model) {
         model.addAttribute("name", "fowler");
     }
