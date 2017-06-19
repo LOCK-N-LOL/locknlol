@@ -49,7 +49,7 @@ public class RiotSummonerService {
                 .orElseThrow(() -> new RiotException(RiotErrorCode.SUMMONER_NOT_FOUND));
     }
 
-    private Long getSummonerIdBySummonerName(String summonerName) {
+    public Long getSummonerIdBySummonerName(String summonerName) {
         Summoner summonerInfo = summonerFindService.findBySummonerName(summonerName);
         if (summonerInfo != null) {
             return summonerInfo.getId();
@@ -62,5 +62,7 @@ public class RiotSummonerService {
                 .map(RiotSummonerByNameResponse::getSummonerId)
                 .orElseThrow(() -> new RiotException(RiotErrorCode.SUMMONER_NOT_FOUND));
     }
+
+
 
 }

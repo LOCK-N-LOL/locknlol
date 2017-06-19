@@ -48,18 +48,18 @@ public class RiotRealTimeCallServiceTest {
 		riotRealTimeCallService.getRecentMatches(SUMMONER_NAME);
 
 		verify(adapter, never()).get(RiotRequests.SUMMONER_BY_NAME,
-			RiotAdapterParameter.summonerByName(SUMMONER_NAME));
+			RiotAdapterParameter.getSummonerNameParam(SUMMONER_NAME));
 	}
 
 	@Test
 	public void try_api_call_when_summnoer_info_not_in_db() throws Exception {
 		when(summonerFindService.findBySummonerName(SUMMONER_NAME)).thenReturn(null);
-		when(adapter.get(RiotRequests.SUMMONER_BY_NAME, RiotAdapterParameter.summonerByName(SUMMONER_NAME))).thenReturn(response);
+		when(adapter.get(RiotRequests.SUMMONER_BY_NAME, RiotAdapterParameter.getSummonerNameParam(SUMMONER_NAME))).thenReturn(response);
 
 		riotRealTimeCallService.getRecentMatches(SUMMONER_NAME);
 
-		verify(adapter).get(RiotRequests.SUMMONER_BY_NAME, RiotAdapterParameter.summonerByName(SUMMONER_NAME));
-		verify(adapter).get(RiotRequests.RECENT_MATCHES, RiotAdapterParameter.recentMatchByAccountId(
+		verify(adapter).get(RiotRequests.SUMMONER_BY_NAME, RiotAdapterParameter.getSummonerNameParam(SUMMONER_NAME));
+		verify(adapter).get(RiotRequests.RECENT_MATCHES, RiotAdapterParameter.getAccountIdParam(
 			response.getAccountId()));
 	}
 }
