@@ -7,6 +7,7 @@ import com.querydsl.core.types.dsl.*;
 import com.querydsl.core.types.PathMetadata;
 import javax.annotation.Generated;
 import com.querydsl.core.types.Path;
+import com.querydsl.core.types.dsl.PathInits;
 
 
 /**
@@ -16,6 +17,8 @@ import com.querydsl.core.types.Path;
 public class QSummoner extends EntityPathBase<Summoner> {
 
     private static final long serialVersionUID = -1178400367L;
+
+    private static final PathInits INITS = PathInits.DIRECT2;
 
     public static final QSummoner summoner = new QSummoner("summoner");
 
@@ -41,16 +44,27 @@ public class QSummoner extends EntityPathBase<Summoner> {
 
     public final StringPath summonerName = createString("summonerName");
 
+    public final com.locknlol.coukie.domain.user.QUser user;
+
     public QSummoner(String variable) {
-        super(Summoner.class, forVariable(variable));
+        this(Summoner.class, forVariable(variable), INITS);
     }
 
     public QSummoner(Path<? extends Summoner> path) {
-        super(path.getType(), path.getMetadata());
+        this(path.getType(), path.getMetadata(), PathInits.getFor(path.getMetadata(), INITS));
     }
 
     public QSummoner(PathMetadata metadata) {
-        super(Summoner.class, metadata);
+        this(metadata, PathInits.getFor(metadata, INITS));
+    }
+
+    public QSummoner(PathMetadata metadata, PathInits inits) {
+        this(Summoner.class, metadata, inits);
+    }
+
+    public QSummoner(Class<? extends Summoner> type, PathMetadata metadata, PathInits inits) {
+        super(type, metadata, inits);
+        this.user = inits.isInitialized("user") ? new com.locknlol.coukie.domain.user.QUser(forProperty("user"), inits.get("user")) : null;
     }
 
 }
