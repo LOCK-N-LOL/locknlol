@@ -26,12 +26,12 @@ configurations {
 	providedRuntime
 }
 
-def queryDslOutput = file("src/main/java/generated")
+def queryDslOutput = file("src/generated")
 
 sourceSets {
 	main {
 		java {
-			srcDir "src/main/java/generated"
+			srcDir "src/generated"
 		}
 	}
 }
@@ -69,12 +69,12 @@ dependencies {
 	/**
 	 * querydsl dependency
 	 */
-	compile ("com.querydsl:querydsl-core:$querydslVersion")
-	compile ("com.querydsl:querydsl-apt:$querydslVersion")
-	compile ("com.querydsl:querydsl-jpa:$querydslVersion")
+	compile ("com.querydsl:querydsl-core")
+	compile ("com.querydsl:querydsl-apt")
+	compile ("com.querydsl:querydsl-jpa")
 
 	compile('org.springframework.boot:spring-boot-starter-web')
-	compile('org.projectlombok:lombok:1.16.16')
+	compile('org.projectlombok:lombok')
 	compile('pl.allegro.tech.boot:handlebars-spring-boot-starter:0.2.15')
 	compile('org.springframework.boot:spring-boot-starter-data-jpa')
 	providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
