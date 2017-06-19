@@ -26,12 +26,12 @@ configurations {
 	providedRuntime
 }
 
-def queryDslOutput = file("src/main/java/generated")
+def queryDslOutput = file("src/generated")
 
 sourceSets {
 	main {
 		java {
-			srcDir "src/main/java/generated"
+			srcDir "src/generated"
 		}
 	}
 }

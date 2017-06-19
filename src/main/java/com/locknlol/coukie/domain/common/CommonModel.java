@@ -33,4 +33,9 @@ public abstract class CommonModel implements Creatable, Modifiable{
 		this.createdBy = createdBy;
 		this.modifiedBy = createdBy;
 	}
+
+	public void setCreatedAt(Date date) {
+		this.createdAt = date;
+		this.modifiedAt = date;
+	}
 }
