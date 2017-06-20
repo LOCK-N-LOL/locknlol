@@ -1,4 +1,4 @@
-package com.locknlol.coukie.adapter.riot.response;
+package com.locknlol.coukie.adapter.riot.dto;
 
 import com.locknlol.coukie.adapter.riot.dto.ParticipantDto;
 import com.locknlol.coukie.adapter.riot.dto.ParticipantIdentityDto;
@@ -15,7 +15,7 @@ import java.util.List;
 
 @Getter
 @Setter
-public class RiotMatchByMatchIdResponse {
+public class RiotMatchByMatchIdDto {
     private Integer seasonId;
     private Integer queueId;
     private Long gameId;

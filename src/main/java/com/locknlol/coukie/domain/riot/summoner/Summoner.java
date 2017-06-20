@@ -1,6 +1,6 @@
 package com.locknlol.coukie.domain.riot.summoner;
 
-import com.locknlol.coukie.adapter.riot.response.RiotSummonerByNameResponse;
+import com.locknlol.coukie.adapter.riot.dto.RiotSummonerByNameDto;
 import com.locknlol.coukie.domain.common.CommonModel;
 import lombok.Getter;
 import lombok.Setter;
@@ -31,7 +31,7 @@ public class Summoner extends CommonModel{
 	@Column(name = "summonerId", updatable = false)
 	private Long summonerId;
 
-	public static Summoner convert(RiotSummonerByNameResponse response) {
+	public static Summoner convert(RiotSummonerByNameDto response) {
 		Summoner summoner = new Summoner();
 		summoner.setAccountId(response.getAccountId());
 		summoner.setSummonerId(response.getSummonerId());

@@ -1,7 +1,7 @@
 package com.locknlol.coukie.domain.riot.rune;
 
 import com.locknlol.coukie.adapter.riot.dto.rune.RiotRunePagesResponse;
-import com.locknlol.coukie.domain.riot.RiotAdapterService;
+import com.locknlol.coukie.adapter.riot.RiotAdapterService;
 import com.locknlol.coukie.domain.riot.summoner.RiotSummonerService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

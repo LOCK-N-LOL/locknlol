@@ -37,17 +37,17 @@ public class RiotAdapter extends Adapter {
 	/**
 	 *
 	 * @param request 어떠한 요청인지
-	 * @param requestParam api Url의 Path Variable에 들어갈 param, 네이밍 맞추어 줘야함
-	 * @param getParam url 뒤에 붙을 param   ex) ?name=oscar&team=travel
+	 * @param pathVariable api Url의 Path Variable에 들어갈 param, 네이밍 맞추어 줘야함
+	 * @param requestParam url 뒤에 붙을 param   ex) ?name=oscar&team=travel
 	 * @param <Res> response
 	 * @return
 	 * @throws Exception
 	 */
-	public <Res> Res get(RiotRequest<Res> request, Map<String, Object> requestParam, Map<String, Object> getParam) {
+	public <Res> Res get(RiotRequest<Res> request, Map<String, Object> pathVariable, Map<String, Object> requestParam) {
 		try {
-			String url = urlBuilder.buildUrl(request.getUrl(), getParam);
+			String url = urlBuilder.buildUrl(request.getUrl(), requestParam);
 			log.info("request url: {}", url);
-			String response = restTemplate.getForObject(url, String.class, requestParam);
+			String response = restTemplate.getForObject(url, String.class, pathVariable);
 			log.info("request: {}", response);
 			return riotParser.parse(response, request.getResponseType());
 		} catch (Exception e) {

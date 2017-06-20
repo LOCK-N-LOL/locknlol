@@ -1,6 +1,6 @@
 package com.locknlol.coukie.interfaces.web;
 
-import com.locknlol.coukie.adapter.riot.response.RiotResponse;
+import com.locknlol.coukie.adapter.riot.dto.RiotDto;
 import com.locknlol.coukie.domain.riot.auth.SummonerAuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,7 +23,7 @@ public class AuthController {
 	}
 
 	@RequestMapping(value = "/auth/confirm/{summonerName}", method = RequestMethod.GET)
-	private RiotResponse requestAuthentication(@PathVariable String summonerName) {
+	private RiotDto requestAuthentication(@PathVariable String summonerName) {
 		return summonerAuthService.tryAuthentication(summonerName);
 	}
 }

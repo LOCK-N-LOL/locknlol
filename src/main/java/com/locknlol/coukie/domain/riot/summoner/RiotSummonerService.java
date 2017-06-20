@@ -1,7 +1,7 @@
 package com.locknlol.coukie.domain.riot.summoner;
 
-import com.locknlol.coukie.adapter.riot.response.RiotSummonerByNameResponse;
-import com.locknlol.coukie.domain.riot.RiotAdapterService;
+import com.locknlol.coukie.adapter.riot.dto.RiotSummonerByNameDto;
+import com.locknlol.coukie.adapter.riot.RiotAdapterService;
 import com.locknlol.coukie.domain.riot.exception.RiotErrorCode;
 import com.locknlol.coukie.domain.riot.exception.RiotException;
 import lombok.extern.slf4j.Slf4j;
@@ -26,11 +26,11 @@ public class RiotSummonerService {
     @Autowired
     private SummonerSaveService summonerSaveService;
 
-    public RiotSummonerByNameResponse getSummonerByName(String summonerName) {
+    public RiotSummonerByNameDto getSummonerByName(String summonerName) {
         return riotAdapterService.getSummonerByName(summonerName);
     }
 
-    private void saveSummoner(RiotSummonerByNameResponse response) {
+    private void saveSummoner(RiotSummonerByNameDto response) {
         Optional.of(response)
                 .ifPresent(res -> summonerSaveService.save(res));
     }
@@ -41,11 +41,11 @@ public class RiotSummonerService {
             return summonerInfo.getAccountId();
         }
 
-        RiotSummonerByNameResponse response = getSummonerByName(summonerName);
+        RiotSummonerByNameDto response = getSummonerByName(summonerName);
         saveSummoner(response);
 
         return Optional.ofNullable(getSummonerByName(summonerName))
-                .map(RiotSummonerByNameResponse::getAccountId)
+                .map(RiotSummonerByNameDto::getAccountId)
                 .orElseThrow(() -> new RiotException(RiotErrorCode.SUMMONER_NOT_FOUND));
     }
 
@@ -55,11 +55,11 @@ public class RiotSummonerService {
             return summonerInfo.getId();
         }
 
-        RiotSummonerByNameResponse response = getSummonerByName(summonerName);
+        RiotSummonerByNameDto response = getSummonerByName(summonerName);
         saveSummoner(response);
 
         return Optional.ofNullable(response)
-                .map(RiotSummonerByNameResponse::getSummonerId)
+                .map(RiotSummonerByNameDto::getSummonerId)
                 .orElseThrow(() -> new RiotException(RiotErrorCode.SUMMONER_NOT_FOUND));
     }
 

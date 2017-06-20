@@ -1,7 +1,7 @@
 package com.locknlol.coukie.domain.riot.league;
 
-import com.locknlol.coukie.adapter.riot.response.RiotLeaguesBySummonerIdResponse;
-import com.locknlol.coukie.domain.riot.RiotAdapterService;
+import com.locknlol.coukie.adapter.riot.dto.RiotLeaguesBySummonerIdDto;
+import com.locknlol.coukie.adapter.riot.RiotAdapterService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,7 +17,7 @@ public class RiotLeagueService {
     @Autowired
     RiotAdapterService riotAdapterService;
 
-    public RiotLeaguesBySummonerIdResponse getLeaguesBySummonerId(Long summonerId) {
+    public RiotLeaguesBySummonerIdDto getLeaguesBySummonerId(Long summonerId) {
         return riotAdapterService.getAllLeaguesBySummonerId(summonerId);
     }
 
