@@ -1,8 +1,8 @@
 package com.locknlol.coukie.domain.riot.match;
 
-import com.locknlol.coukie.adapter.riot.response.RiotMatchByMatchIdResponse;
-import com.locknlol.coukie.adapter.riot.response.RiotMatchResponse;
-import com.locknlol.coukie.domain.riot.RiotAdapterService;
+import com.locknlol.coukie.adapter.riot.dto.RiotMatchByMatchIdDto;
+import com.locknlol.coukie.adapter.riot.dto.RiotMatchDto;
+import com.locknlol.coukie.adapter.riot.RiotAdapterService;
 import com.locknlol.coukie.domain.riot.summoner.RiotSummonerService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,16 +22,16 @@ public class RiotMatchService {
     @Autowired
     RiotSummonerService riotSummonerService;
 
-    public RiotMatchResponse getRecentMatches(String summonerName) {
+    public RiotMatchDto getRecentMatches(String summonerName) {
         Long accountId = riotSummonerService.getAccountIdBySummonerName(summonerName);
         return riotAdapterService.getRecentMatchesByAccountId(accountId);
     }
 
-    public RiotMatchByMatchIdResponse getMatchByMatchId(Long matchId) {
+    public RiotMatchByMatchIdDto getMatchByMatchId(Long matchId) {
         return riotAdapterService.getMatchByMatchId(matchId);
     }
 
-    public RiotMatchResponse getAllMatches(String summonerName) {
+    public RiotMatchDto getAllMatches(String summonerName) {
         Long accountId = riotSummonerService.getAccountIdBySummonerName(summonerName);
         return riotAdapterService.getAllMatches(accountId);
     }

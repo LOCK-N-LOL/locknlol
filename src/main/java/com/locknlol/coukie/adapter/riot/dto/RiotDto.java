@@ -1,4 +1,4 @@
-package com.locknlol.coukie.adapter.riot.response;
+package com.locknlol.coukie.adapter.riot.dto;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -9,7 +9,7 @@ import lombok.Setter;
 @Getter
 @Setter
 
-public class RiotResponse {
+public class RiotDto {
 	private Boolean isSuccess;
 	private String message;
 }
