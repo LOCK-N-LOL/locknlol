@@ -2,16 +2,17 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Sign up</title>
+  <title>Sign in</title>
 </head>
 <body>
-sign up
-<p/>
-<form action="/member/signup/new" method="post">
+Sign in
+<form action="/member/signin" method="post" enctype='application/json'>
   <p><label>email</label> <input type="email" name="email"/></p>
   <p><label>password</label> <input type="password" name="password"/></p>
   <br/>
   <button type="submit">submit</button>
 </form>
+<button>ID/Password찾기</button>
+<button>회원 가입</button>
 </body>
 </html>
