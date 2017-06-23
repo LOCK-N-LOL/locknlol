@@ -22,7 +22,7 @@ import java.util.Map;
 @RequestMapping(value = "/member")
 public class MemberSignController {
 
-	// TODO : 뷰 컨트롤러는 Exception 발생 시, 에러페이지를 만들어서 렌더링 해주자.
+	// TODO : 뷰 컨트롤러는 Exception 발생 시, 에러페이지 혹은 alert를 만들어서 렌더링 해주자.
 
 	@Autowired
 	private MemberSignService memberSignService;
@@ -33,13 +33,13 @@ public class MemberSignController {
 	}
 
 	@RequestMapping(value = "/signin", method = RequestMethod.POST)
-	public String signInAction(@ModelAttribute @Valid MemberDto.Request requestDto, HttpSession session, BindingResult result) {
+	public String signInAction(@ModelAttribute @Valid MemberDto.Creation creationDto, HttpSession session, BindingResult result) {
 		if (result.hasErrors()) {
 			// TODO : 에러 뷰 페이지로 이동
 		}
 
 		// TODO : session 정상동작하는 지 확인해 볼 것.
-		if (memberSignService.signIn(requestDto)) {
+		if (memberSignService.signIn(creationDto)) {
 			Map<String,Object> map = new HashMap<>();
 			map.put("admin_id", "admin");
 			map.put("admin_name" , "유저");
@@ -55,12 +55,12 @@ public class MemberSignController {
 	}
 
 	@RequestMapping(value = "/signup/new", method = RequestMethod.POST)
-	public String signUpNew(@ModelAttribute @Valid MemberDto.Request requestDto, BindingResult result) {
+	public String signUpNew(@ModelAttribute @Valid MemberDto.Creation creationDto, BindingResult result) {
 		if (result.hasErrors()) {
 			// TODO : 에러 뷰 페이지로 이동
 		}
 
-		if (memberSignService.signUp(requestDto) == null) {
+		if (memberSignService.signUp(creationDto) == null) {
 			return "/member/signup/form";
 		}
 

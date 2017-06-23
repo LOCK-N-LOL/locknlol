@@ -48,21 +48,21 @@ public class MemberRepositoryService {
 		return responseDto;
 	}
 
-	public boolean isValidMember(MemberDto.Request requestDto)  {
-		return isValidPassword(requestDto);
+	public boolean isValidMember(MemberDto.Creation creationDto)  {
+		return isValidPassword(creationDto);
 	}
 
-	public MemberDto.Response save(MemberDto.Request requestDto) {
-		if (memberRepository.findByEmail(requestDto.getEmail()) != null) {
-			throw new MemberEmailDuplicatedException(requestDto.getEmail());
+	public MemberDto.Response save(MemberDto.Creation creationDto) {
+		if (memberRepository.findByEmail(creationDto.getEmail()) != null) {
+			throw new MemberEmailDuplicatedException(creationDto.getEmail());
 		}
-		if (requestDto.getPassword().length() < 6) {
+		if (creationDto.getPassword().length() < 6) {
 			throw new MemberInvalidPasswordException();
 		}
 
 		Member member = new Member();
-		member.setEmail(requestDto.getEmail());
-		member.setPassword(cryptPassword(requestDto.getPassword()));
+		member.setEmail(creationDto.getEmail());
+		member.setPassword(cryptPassword(creationDto.getPassword()));
 		Date now = new Date();
 		member.setCreatedAt(now);
 		member.setModifiedAt(now);
@@ -73,13 +73,13 @@ public class MemberRepositoryService {
 		return responseDto;
 	}
 
-	public MemberDto.Response modify(MemberDto.Request requestDto)  {
-		Member foundMember = memberRepository.findByEmail(requestDto.getEmail());
+	public MemberDto.Response modify(MemberDto.Modification creationDto)  {
+		Member foundMember = memberRepository.findByEmail(creationDto.getEmail());
 		if (foundMember == null) {
-			throw new MemberNotFoundException(requestDto.getEmail());
+			throw new MemberNotFoundException(creationDto.getEmail());
 		}
 
-		foundMember.setPassword(cryptPassword(requestDto.getPassword()));
+		foundMember.setPassword(cryptPassword(creationDto.getPassword()));
 		foundMember.setModifiedAt(new Date());
 		Member newMember = memberRepository.save(foundMember);
 
@@ -92,11 +92,11 @@ public class MemberRepositoryService {
 		return memberSecurityService.cryptPassword(password);
 	}
 
-	private boolean isValidPassword(MemberDto.Request requestDto)  {
-		Member foundMember = memberRepository.findByEmail(requestDto.getEmail());
+	private boolean isValidPassword(MemberDto.Creation creationDto)  {
+		Member foundMember = memberRepository.findByEmail(creationDto.getEmail());
 		if (foundMember == null) {
-			throw new MemberNotFoundException(requestDto.getEmail());
+			throw new MemberNotFoundException(creationDto.getEmail());
 		}
-		return memberSecurityService.confirmPassword(foundMember, requestDto.getPassword());
+		return memberSecurityService.confirmPassword(foundMember, creationDto.getPassword());
 	}
 }

@@ -12,6 +12,9 @@ import java.security.spec.InvalidKeySpecException;
 /**
  * Created by coupang on 2017. 6. 16..
  */
+
+
+// TODO : Spring security 적용을 해보는 것은 어떨까?
 @Slf4j
 @Service
 public class MemberSecurityService {

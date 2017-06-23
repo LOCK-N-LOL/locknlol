@@ -9,10 +9,11 @@ import java.util.Date;
 
 /**
  * Created by leetaejun on 2017. 6. 21..
+ * @see com.locknlol.coukie.domain.member.entity.Member
  */
 public class MemberDto {
 	@Data
-	public static class Request {
+	public static class Creation {
 		@NotBlank
 		@Size(min = 1)
 		// @Pattern() 여기에 이메일 정규식을 추가하자
@@ -20,6 +21,12 @@ public class MemberDto {
 
 		@NotBlank
 		@Size(min = 6)
+		private String password;
+	}
+
+	@Data
+	public static class Modification {
+		private String email;
 		private String password;
 	}
 

@@ -1,4 +1,4 @@
-package com.locknlol.coukie.domain.member.service;
+package com.locknlol.coukie.controller.member.admin;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.locknlol.coukie.domain.member.dto.MemberDto;
@@ -19,12 +19,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 /**
- * Created by leetaejun on 2017. 6. 21..
+ * Created by leetaejun on 2017. 6. 23..
  */
-
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class MemberRepositoryServiceTest {
+public class MemberAdminControllerTest {
 
 	@Autowired
 	WebApplicationContext wac;
@@ -42,12 +41,11 @@ public class MemberRepositoryServiceTest {
 	@Test
 	public void save() throws Exception {
 
-
-		MemberDto.Request dto = new MemberDto.Request();
+		MemberDto.Creation dto = new MemberDto.Creation();
 		dto.setEmail("ltj1@naver.com");
 		dto.setPassword("123qwe");
 
-		ResultActions result = mockMvc.perform(post("/admin/member/save")
+		ResultActions result = mockMvc.perform(post("/admin/members/")
 			.contentType(MediaType.APPLICATION_JSON)
 			.content(objectMapper.writeValueAsString(dto)));
 
@@ -59,11 +57,11 @@ public class MemberRepositoryServiceTest {
 
 	@Test
 	public void saveBadRequest() throws Exception {
-		MemberDto.Request dto = new MemberDto.Request();
+		MemberDto.Creation dto = new MemberDto.Creation();
 		dto.setEmail(" ");
 		dto.setPassword("1234");
 
-		ResultActions result = mockMvc.perform(post("/admin/member/save")
+		ResultActions result = mockMvc.perform(post("/admin/members/")
 			.contentType(MediaType.APPLICATION_JSON)
 			.content(objectMapper.writeValueAsString(dto)));
 

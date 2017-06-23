@@ -14,15 +14,15 @@ public class MemberSignService {
 	@Autowired
 	private MemberRepositoryService memberRepositoryService;
 
-	public boolean signIn(MemberDto.Request requestDto) {
-		return memberRepositoryService.isValidMember(requestDto);
+	public boolean signIn(MemberDto.Creation creationDto) {
+		return memberRepositoryService.isValidMember(creationDto);
 	}
 
-	public MemberDto.Response signUp(MemberDto.Request requestDto) {
-		return memberRepositoryService.save(requestDto);
+	public MemberDto.Response signUp(MemberDto.Creation creationDto) {
+		return memberRepositoryService.save(creationDto);
 	}
 
-	private MemberDto.Response modifyMember(MemberDto.Request requestDto) {
-		return memberRepositoryService.modify(requestDto);
+	private MemberDto.Response modifyMember(MemberDto.Modification modificationDto) {
+		return memberRepositoryService.modify(modificationDto);
 	}
 }
