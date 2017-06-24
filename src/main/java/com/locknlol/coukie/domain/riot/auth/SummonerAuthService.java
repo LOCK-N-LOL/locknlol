@@ -2,7 +2,7 @@ package com.locknlol.coukie.domain.riot.auth;
 
 import com.locknlol.coukie.adapter.riot.dto.rune.RiotRunePagesResponse;
 import com.locknlol.coukie.adapter.riot.dto.rune.RunePageDto;
-import com.locknlol.coukie.adapter.riot.response.RiotResponse;
+import com.locknlol.coukie.adapter.riot.dto.RiotDto;
 import com.locknlol.coukie.domain.riot.rune.RiotRuneService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,7 +28,7 @@ public class SummonerAuthService {
 		return summonerAuth.getAuthKey();
 	}
 
-	public RiotResponse tryAuthentication(String summonerName) {
+	public RiotDto tryAuthentication(String summonerName) {
 		SummonerAuth summonerAuth = summonerAuthFindService.findBySummonerName(summonerName);
 		RiotRunePagesResponse response = riotRuneService.getRunePagesDetailInfo(summonerName);
 		Optional<String> runePageName = findRunePageName(response);
@@ -48,8 +48,8 @@ public class SummonerAuthService {
 				.map(RunePageDto::getRunePageName).findAny()).get();
 	}
 
-	private RiotResponse getRiotResponse(Boolean success, String message) {
-		RiotResponse riotResponse = new RiotResponse();
+	private RiotDto getRiotResponse(Boolean success, String message) {
+		RiotDto riotResponse = new RiotDto();
 		riotResponse.setIsSuccess(success);
 		riotResponse.setMessage(message);
 		return riotResponse;

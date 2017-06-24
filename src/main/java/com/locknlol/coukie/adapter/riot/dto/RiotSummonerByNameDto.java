@@ -1,4 +1,4 @@
-package com.locknlol.coukie.adapter.riot.response;
+package com.locknlol.coukie.adapter.riot.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
@@ -9,7 +9,7 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class RiotSummonerByNameResponse {
+public class RiotSummonerByNameDto {
 	/**
 	 * 	ID of the summoner icon associated with the summoner.
 	 */

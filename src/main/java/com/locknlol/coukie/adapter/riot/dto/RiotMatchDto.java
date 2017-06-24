@@ -1,4 +1,4 @@
-package com.locknlol.coukie.adapter.riot.response;
+package com.locknlol.coukie.adapter.riot.dto;
 
 import com.locknlol.coukie.adapter.riot.dto.MatchReferenceDto;
 import lombok.Getter;
@@ -11,7 +11,7 @@ import java.util.List;
  */
 @Getter
 @Setter
-public class RiotMatchResponse {
+public class RiotMatchDto {
 
 	private List<MatchReferenceDto> matches;
 	private Integer totalGames;
