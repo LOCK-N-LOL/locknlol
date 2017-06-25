@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{#block "title"}}{{/block}}</title>
+    <meta charset="utf-8">
+    <meta content="width=device-width" name="viewport">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/assets/base.css">
+    <link rel="stylesheet" href="css/assets/layout.css">
+
+    <!-- page specific plugin styles -->
+    {{#block "page_style"}}{{/block}}
+
+    <!-- ace styles -->
+    <link rel="stylesheet" href="assets/css/ace.min.css">
+</head>
+<body>
+
+{{> asset/layout/header}}
+
+<div id="main-container" class="main-container">
+    <a id="menu-toggler" class="menu-toggler" href="#">
+        <span class="menu-text"></span>
+    </a>
+
+    {{> asset/layout/sidebar}}
+
+    <div class="main-content">
+        {{#block "breadcrumbs"}}{{/block}}
+        {{#block "content"}}{{/block}}
+    </div>
+
+    <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse display">
+        <i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
+    </a>
+</div>
+<script src="assets/js/jquery.min.js"></script>
+
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/lodash.min.js"></script>
+{{#block "page_script" }}{{/block}}
+</body>
+</html>

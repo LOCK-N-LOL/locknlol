@@ -1,6 +1,6 @@
 # locknlol
 
-## Updates 2017.06.25
+## Updates 2017.06.26
 
 ### Installation in 6.26 about Front-End
 * npm 계열
@@ -17,8 +17,7 @@
     * 역시 ```bower install``` 로 해결 가능
 * sass ```gem install sass```
 
-### Using resources instead of webapp 
-* 말 그대로, webapp 대신 resources를 쓰자
+### Setting assets
 * 라이브러리나 아이콘처럼 static한 것은 assets에
 * 그렇지 않은 것은 resources 밑에 css, js, view 등 종류별로 구분하여 두자
 
