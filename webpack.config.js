@@ -1,11 +1,11 @@
 const path = require('path');
 
 module.exports = {
-    entry: './src/main/webapp/js/entry.js',// entry.js 를 시작으로 빌드된다.
+    entry: './src/main/webapp/js/webpack/example/entry.js',// entry.js 를 시작으로 빌드된다.
 
     output: {
-        filename: 'index.js', // 빌드가 완료되면 filename 으로 파일을 생성한다
-        path: __dirname + '/src/main/webapp/js'
+        filename: 'webpack-example.js', // 빌드가 완료되면 filename 으로 파일을 생성한다
+        path: __dirname + '/src/main/webapp/js/webpack/example'
     },
 
     plugins: [],
