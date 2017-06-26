@@ -5,10 +5,8 @@
 const gulp = require('gulp');
 const del = require('del');
 const flatten = require('gulp-flatten');
-// const uglify = require('gulp-uglify');
-// const minifycss = require('gulp-minify-css');
 const sass = require('gulp-sass');
-// const sourcemaps = require('gulp-sourcemaps');
+const sourcemaps = require('gulp-sourcemaps');
 
 const dir = {
     assets: "src/main/webapp/assets/",
@@ -39,52 +37,77 @@ const paths = {
         '**/*.woff2'
     ],
     sassFiles: [
-        dir.sass + "**/*.scss",
-        "!" + dir.sass + "assets/layout/**"
+        dir.sass + "**/*.scss", // 포함 file
+        "!" + dir.sass + "assets/layout/**" // !가 있으면 제외 file
     ]
 };
 
-gulp.task("assets-files-clean", function() {
-    del(['src/main/webapp/assets/**'], {force: true});
+const assets = {
+    js: {
+        src: paths.jsFiles,
+        dest: dir.assets + "js/"
+    },
+    css: {
+        src: paths.cssFiles,
+        dest: dir.assets + "css/"
+    },
+    fonts: {
+        src: paths.fontFiles,
+        dest: dir.assets + "fonts/"
+    },
+    tasks: [
+        'assets:js',
+        'assets:css',
+        'assets:fonts'
+    ]
+};
+
+gulp.task("assets:clean", () => {
+    return del([dir.assets + '**'], {force: true});
 });
 
-gulp.task("assets-js-files", function() {
-    return gulp.src(paths.jsFiles)
+gulp.task("assets:js", () => {
+    return gulp.src(assets.js.src)
                .pipe(flatten())
-               .pipe(gulp.dest(dir.assets + "js/"))
-               // .pipe(uglify())
-               // .pipe(rename({ suffix: ".min"}))
-               // .pipe(gulp.dest(config.assets + 'js/'))
+               .pipe(gulp.dest(assets.js.dest))
 });
 
-gulp.task("assets-css-files", function() {
-    return gulp.src(paths.cssFiles)
+gulp.task("assets:css", () => {
+    return gulp.src(assets.css.src)
                .pipe(flatten())
-               .pipe(gulp.dest(dir.assets + 'css/'))
-               // .pipe(minifycss())
-               // .pipe(rename({ suffix: ".min"}))
-               // .pipe(gulp.dest(config.assets + 'css/'))
+               .pipe(gulp.dest(assets.css.dest))
 });
 
-gulp.task("assets-font-files", function() {
-    return gulp.src(paths.fontFiles)
+gulp.task("assets:fonts", () => {
+    return gulp.src(assets.fonts.src)
                .pipe(flatten())
-               .pipe(gulp.dest(dir.assets + 'fonts/'))
+               .pipe(gulp.dest(assets.fonts.dest))
 });
 
-gulp.task("sass", function() {
-   return gulp.src(paths.sassFiles)
-              // .pipe(sourcemaps.init())
-              .pipe(sass())
-              // .pipe(sourcemaps.write())
-              .pipe(gulp.dest(dir.css))
+gulp.task('assets', assets.tasks);
+
+gulp.task("sass", () => {
+    return gulp.src(paths.sassFiles)
+               .pipe(sourcemaps.init())
+               .pipe(sass({outputStyle: 'expanded'}))
+               .pipe(sourcemaps.write())
+               .pipe(gulp.dest(dir.css))
 });
 
-const executes = [
-    'assets-js-files',
-    'assets-css-files',
-    'assets-font-files'
-];
+gulp.task("sass:watch", () => {
+    gulp.watch(paths.sassFiles, ['sass']) // sass-hotfix
+});
 
-// gulp.task('default', ["assets-files-clean"], () => { console.log('Assets is cleaning'); });
-gulp.task('default', executes, () => { console.log('Gulp is running'); });
+gulp.task("sass:commit", () => {
+    return gulp.src(paths.sassFiles)
+               .pipe(sass({outputStyle: 'expanded'}))
+               .pipe(gulp.dest(dir.css))
+});
+
+gulp.task("sass:deploy", () => {
+    return gulp.src(paths.sassFiles)
+               .pipe(sass({outputStyle: 'compressed'}))
+               .pipe(gulp.dest(dir.css))
+});
+
+gulp.task('default', assets.tasks, () => { console.log('Gulp is running'); });
