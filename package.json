@@ -29,6 +29,7 @@
     "webpack": "^2.2.1"
   },
   "dependencies": {
+    "ace-css": "^1.1.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1"
   }
