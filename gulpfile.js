@@ -15,7 +15,7 @@ const dir = {
     bower: "bower_components/",
     npm: "node_modules/",
     sass: "src/main/webapp/sass/",
-    css: "src/main/webapp/css/",
+    css: "src/main/webapp/css/"
 };
 
 const paths = {
@@ -45,7 +45,7 @@ const paths = {
 };
 
 gulp.task("assets-files-clean", function() {
-    del(['src/main/resources/assets/**'], {force: true});
+    del(['src/main/webapp/assets/**'], {force: true});
 });
 
 gulp.task("assets-js-files", function() {
