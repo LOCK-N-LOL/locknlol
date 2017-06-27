@@ -37,10 +37,36 @@
         <i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
     </a>
 </div>
-<script src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="assets/js/lodash.min.js"></script>
+<script type="text/javascript" src="assets/js/require.js"></script>
+<script type="text/javascript">
+    const requirejsDependencyPath = {
+        'bootstrap': 'assets/js/bootstrap.min',
+        'jquery': 'assets/js/jquery.min',
+        'lodash': 'assets/js/lodash.min',
+        'react': 'assets/js/react-with-addons.min',
+        'react-dom': 'assets/js/react-dom.min'
+    };
 
-<script src="assets/js/bootstrap.min.js"></script>
-<script src="assets/js/lodash.min.js"></script>
+    require.config({
+        baseUrl: '.',
+        paths: requirejsDependencyPath,
+        shim: {
+            'bootstrap': {
+                deps: ['jquery']
+            },
+            'ace': {
+                deps: ['bootstrap']
+            },
+        },
+        "jsx": {
+            fileExtension: '.jsx',
+            harmony: true
+        }
+    });
+</script>
 {{#block "page_script" }}{{/block}}
 </body>
 </html>
