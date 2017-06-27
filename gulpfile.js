@@ -7,21 +7,26 @@ const del = require('del');
 const flatten = require('gulp-flatten');
 const sass = require('gulp-sass');
 const sourcemaps = require('gulp-sourcemaps');
+const babel = require('gulp-babel');
 
 const dir = {
-    assets: "src/main/webapp/assets/",
     bower: "bower_components/",
     npm: "node_modules/",
+    assets: "src/main/webapp/assets/",
     sass: "src/main/webapp/sass/",
-    css: "src/main/webapp/css/"
+    css: "src/main/webapp/css/",
+    requirejs: "src/main/webapp/requirejs/",
+    js: "src/main/webapp/js/"
 };
 
 const paths = {
     jsFiles: [
         dir.bower + 'bootstrap/dist/**/*.js',
         dir.bower + 'jquery/dist/**/*.js',
-        dir.bower + 'lodash/dist/**/*.js'
-        // dir.bower + 'react/**/*.js'
+        dir.bower + 'lodash/dist/**/*.js',
+        dir.bower + 'requirejs/**/*.js',
+        dir.bower + 'react/**/*.js',
+        dir.bower + 'commonjs/**/*.js',
     ],
     cssFiles: [
         dir.bower + 'bootstrap/dist/**/*.css',
@@ -108,6 +113,18 @@ gulp.task("sass:deploy", () => {
     return gulp.src(paths.sassFiles)
                .pipe(sass({outputStyle: 'compressed'}))
                .pipe(gulp.dest(dir.css))
+});
+
+gulp.task("babel", () => {
+    return gulp.src(dir.requirejs + "**")
+               .pipe(sourcemaps.init())
+               .pipe(babel({presets: ['es2015', 'react']}))
+               .pipe(sourcemaps.write())
+               .pipe(gulp.dest(dir.js));
+});
+
+gulp.task("babel:watch", () => {
+    gulp.watch(dir.requirejs + "**", ['babel']) // babel-hotfix
 });
 
 gulp.task('default', assets.tasks, () => { console.log('Gulp is running'); });
