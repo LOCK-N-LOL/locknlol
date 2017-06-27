@@ -2,6 +2,6 @@
  * @author Haylie
  * @since 2017. 5. 16..
  */
-const hello = require('./hello');
-const world = require('./world');
+import hello from './hello';
+import world from './world';
 document.getElementById('greeting').innerHTML += hello + ', ' + world() + '!';
