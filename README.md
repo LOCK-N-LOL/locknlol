@@ -7,10 +7,9 @@
     * 대부분의 assets이 깔려있음
 * gulp
     * assets, sass, babel task이 작성되어 있음
-        * assets: static한 resources 보관
+        * assets: static한 resources 보관, assets 파일 내부를 수정하는 것은 금지 (날아감)
         * sass: scss를 css로 변환, 여러 모드가 있으니 각 용도에 맞게 사용할 것 (**map**)
         * babel: requirejs를 이용하여 작성한 jsx파일 변경, 현재 /requirejs 에 존재 (**map**)
-        * 파일 내부를 수정하는 것은 금지 (날아감)
     * ```gulp (task)``` 로 실행
     * default task는 ```gulp```로만 실행됨 (현재 assets)
     * watch => 실시간 수정, 나중에 가면 버벅거림
