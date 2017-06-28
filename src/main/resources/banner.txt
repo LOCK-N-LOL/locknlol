@@ -1,0 +1,11 @@
+      ___       ___           ___
+     /\__\     /\__\         /\__\        application.title = ${application.title}
+    /:/  /    /::|  |       /:/  /
+   /:/  /    /:|:|  |      /:/  /
+  /:/  /    /:/|:|  |__   /:/  /          application.version = ${application.version}
+ /:/__/    /:/ |:| /\__\ /:/__/
+ \:\  \    \/__|:|/:/  / \:\  \
+  \:\  \       |:/:/  /   \:\  \          spring-boot.version = ${spring-boot.version}
+   \:\  \      |::/  /     \:\  \
+    \:\__\     /:/  /       \:\__\
+     \/__/     \/__/         \/__/

@@ -2,6 +2,7 @@
 /build/
 !gradle/wrapper/gradle-wrapper.jar
 node_modules/
+bower_components/
 src/generated
 
 ### STS ###
@@ -25,4 +26,3 @@ nbbuild/
 dist/
 nbdist/
 .nb-gradle/
-node_modules/
