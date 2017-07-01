@@ -17,4 +17,12 @@ public class MatchStatService {
     public MatchBasicStatDto getRecentTwentyMatchesStat(String summonerName, int rankType, int queueType) {
         return null;
     }
+
+    private int getWinningAvg(int wins, int losses) {
+        return wins * 5;
+    }
+
+    private int getKillingParticipationAvg(int kills, int assists, int deaths) {
+        return 0;
+    }
 }

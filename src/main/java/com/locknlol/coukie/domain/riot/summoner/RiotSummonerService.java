@@ -36,10 +36,10 @@ public class RiotSummonerService {
     }
 
     public Long getAccountIdBySummonerName(String summonerName) {
-        Summoner summonerInfo = summonerFindService.findBySummonerName(summonerName);
-        if (summonerInfo != null) {
-            return summonerInfo.getAccountId();
-        }
+//        Summoner summonerInfo = summonerFindService.findBySummonerName(summonerName);
+//        if (summonerInfo != null) {
+//            return summonerInfo.getAccountId();
+//        }
 
         RiotSummonerByNameDto response = getSummonerByName(summonerName);
         saveSummoner(response);

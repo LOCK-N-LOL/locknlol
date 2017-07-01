@@ -22,7 +22,7 @@ public class SummonerInfoFacade {
 	private MatchStatService matchStatService;
 
 	public List<MatchBasicInfoDto> recentMatchBasicInfos(String summonerName) {
-		return matchInfoService.getRecentTwentyMatchsInfo(summonerName);
+		return matchInfoService.getRecentTwentyMatchsInfo(summonerName); //큐타입을 모르겠어서 enum이랑 연결 못함
 	}
 
 	public MatchBasicStatDto recentMatchBasicStats(String summonerName, int rankType, int queueType) {

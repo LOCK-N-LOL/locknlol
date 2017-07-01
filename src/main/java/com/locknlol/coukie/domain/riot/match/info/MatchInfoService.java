@@ -29,7 +29,11 @@ public class MatchInfoService {
 	}
 	//api call 개많음 ㅎㅎ;
 	private List<RiotMatchByMatchIdDto> getMatchesDetail(List<MatchReferenceDto> matchReferenceDtos) {
-		List<Long> matchIds = matchReferenceDtos.stream().map(MatchReferenceDto::getGameId).collect(toList());
+		List<Long> matchIds = matchReferenceDtos.stream()
+				.filter(matchReferenceDto -> 420 == matchReferenceDto.getQueue() ||  440 == matchReferenceDto.getQueue())
+				.map(MatchReferenceDto::getGameId)
+				.collect(toList());
+
 		return matchIds.stream()
 			.map(matchId -> riotMatchService.getMatchByMatchId(matchId))
 			.collect(toList());
