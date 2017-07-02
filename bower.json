@@ -1,0 +1,27 @@
+{
+  "name": "locknlol",
+  "description": "",
+  "main": "",
+  "authors": [
+    "locknlol"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/LOCK-N-LOL/locknlol",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "lodash": "^4.17.4",
+    "jquery": "^3.2.1",
+    "font-awesome": "fontawesome#^4.7.0",
+    "requirejs": "^2.3.3",
+    "react": "^15.6.1"
+  },
+  "devDependencies": {}
+}

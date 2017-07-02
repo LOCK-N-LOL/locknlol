@@ -27,6 +27,30 @@ public class MatchInfoService {
 		List<MatchBasicInfoDto> matchBasicInfos = getMatchBasicInfos(matchDetails, summonerName);
 		return matchBasicInfos;
 	}
+
+	//시즌 8 인 match들중 랭크게임인 match정보를 최근 10개를 가져옴
+	public List<MatchBasicInfoDto> getRecentTenRankMatchsInfo(String summonerName) {
+		RiotMatchDto matchDto = riotMatchService.getAllMatches(summonerName);
+		Preconditions.checkNotNull(matchDto);
+
+		List<RiotMatchByMatchIdDto> matchDetails = getMatchesDetail(matchDto.getMatches());
+		List<RiotMatchByMatchIdDto> currentSeasonMatchDetails = matchDetails.stream()
+				.filter(matchDetail -> matchDetail.getSeasonId() == 8)
+				.collect(toList());
+		if(currentSeasonMatchDetails.size() > 10) {
+			List<RiotMatchByMatchIdDto> recentTenCurrentSeasonMatchDetails = new ArrayList<>();
+			for(int idx = 0; idx < 10; idx++) {
+				recentTenCurrentSeasonMatchDetails.add(currentSeasonMatchDetails.get(idx));
+			}
+
+			currentSeasonMatchDetails = recentTenCurrentSeasonMatchDetails;
+		}
+
+		List<MatchBasicInfoDto> matchBasicInfoDtos = getMatchBasicInfos(currentSeasonMatchDetails, summonerName);
+		return matchBasicInfoDtos;
+
+	}
+
 	//api call 개많음 ㅎㅎ;
 	private List<RiotMatchByMatchIdDto> getMatchesDetail(List<MatchReferenceDto> matchReferenceDtos) {
 		List<Long> matchIds = matchReferenceDtos.stream()
