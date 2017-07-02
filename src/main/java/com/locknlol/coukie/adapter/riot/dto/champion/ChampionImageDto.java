@@ -1,6 +1,7 @@
 package com.locknlol.coukie.adapter.riot.dto.champion;
 
 import com.locknlol.coukie.adapter.riot.dto.ImageDto;
+import com.locknlol.coukie.domain.champion.entity.ChampionImage;
 import lombok.Data;
 
 /**
@@ -9,4 +10,8 @@ import lombok.Data;
 @Data
 public class ChampionImageDto extends ImageDto {
 
+	@Override
+	public ChampionImage getNewEntity() {
+		return new ChampionImage();
+	}
 }

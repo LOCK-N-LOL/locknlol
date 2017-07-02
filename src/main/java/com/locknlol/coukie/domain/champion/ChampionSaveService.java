@@ -1,6 +1,5 @@
 package com.locknlol.coukie.domain.champion;
 
-import com.google.common.base.Preconditions;
 import com.locknlol.coukie.adapter.riot.dto.ImageDto;
 import com.locknlol.coukie.adapter.riot.dto.champion.*;
 import com.locknlol.coukie.adapter.staticdatav3.ChampionAdapterService;
@@ -8,7 +7,6 @@ import com.locknlol.coukie.domain.champion.entity.*;
 import com.locknlol.coukie.domain.champion.repository.*;
 import com.locknlol.coukie.domain.common.entity.Image;
 import com.locknlol.coukie.domain.common.repository.ImageRepository;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +17,7 @@ import java.util.List;
  * Created by kev on 2017. 6. 5.
  */
 @Service
-public class ChampionInfoSaveService {
+public class ChampionSaveService {
 
 	@Autowired
 	private ChampionAdapterService championAdapterService;
@@ -53,13 +51,11 @@ public class ChampionInfoSaveService {
 	}
 
 	private Champion saveChampion(ChampionDto championDto) {
-		Champion champion = new Champion();
-		BeanUtils.copyProperties(championDto, champion);
+		Champion champion = championDto.copiedEntity();
 
 		List<ChampionSpell> spells = new ArrayList<>();
 		championDto.getSpells().forEach(championSpellDto ->
-			spells.add(saveChampionSpell(championSpellDto))
-		);
+			spells.add(saveChampionSpell(championSpellDto)));
 		champion.setSpells(spells);
 		champion.setTags(saveChampionTags(championDto.getTags()));
 		champion.setInfo(saveChampionInfo(championDto.getInfo()));
@@ -70,8 +66,7 @@ public class ChampionInfoSaveService {
 	}
 
 	private ChampionSpell saveChampionSpell(ChampionSpellDto championSpellDto) {
-		ChampionSpell championSpell = new ChampionSpell();
-		BeanUtils.copyProperties(championSpellDto, championSpell);
+		ChampionSpell championSpell = championSpellDto.copiedEntity();
 		championSpell.setImage((ChampionSpellImage) saveImage(championSpellDto.getImage()));
 		return championSpellRepository.save(championSpell);
 	}
@@ -87,29 +82,17 @@ public class ChampionInfoSaveService {
 	}
 
 	private ChampionInfo saveChampionInfo(ChampionInfoDto championInfoDto) {
-		ChampionInfo championInfo = new ChampionInfo();
-		BeanUtils.copyProperties(championInfoDto, championInfo);
+		ChampionInfo championInfo = championInfoDto.copiedEntity();
 		return championInfoRepository.save(championInfo);
 	}
 
 	private ChampionPassive saveChampionPassive(ChampionPassiveDto championPassiveDto) {
-		ChampionPassive championPassive = new ChampionPassive();
-		BeanUtils.copyProperties(championPassiveDto, championPassive);
+		ChampionPassive championPassive = championPassiveDto.copiedEntity();
 		championPassive.setImage((ChampionPassiveImage) saveImage(championPassiveDto.getImage()));
 		return championPassiveRepository.save(championPassive);
 	}
 
 	private Image saveImage(ImageDto imageDto) {
-		Image image = null;
-		if (imageDto instanceof ChampionImageDto) {
-			image = new ChampionImage();
-		} else if (imageDto instanceof ChampionSpellImageDto) {
-			image = new ChampionSpellImage();
-		} else if (imageDto instanceof ChampionPassiveImageDto) {
-			image = new ChampionPassiveImage();
-		}
-		Preconditions.checkNotNull(image, "이미지를 저장하는데 실패하였습니다.");
-		BeanUtils.copyProperties(imageDto, image);
-		return imageRepository.save(image);
+		return imageRepository.save(imageDto.copiedEntity());
 	}
 }

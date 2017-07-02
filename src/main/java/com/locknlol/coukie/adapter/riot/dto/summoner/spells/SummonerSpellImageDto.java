@@ -8,5 +8,5 @@ import lombok.Data;
  * @since 2017. 6. 5.
  */
 @Data
-public class SummonerSpellImageDto extends ImageDto {
+public class SummonerSpellImageDto {
 }

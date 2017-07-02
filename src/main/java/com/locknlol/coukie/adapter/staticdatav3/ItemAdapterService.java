@@ -16,12 +16,12 @@ import java.util.Collections;
  * @since 2017. 6. 5.
  */
 @Service
-public class ItemInfoAdapterService {
+public class ItemAdapterService {
 
 	private final RiotAdapter riotAdapter;
 
 	@Autowired
-	public ItemInfoAdapterService(RiotAdapter riotAdapter) {
+	public ItemAdapterService(RiotAdapter riotAdapter) {
 		this.riotAdapter = riotAdapter;
 	}
 

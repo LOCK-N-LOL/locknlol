@@ -21,7 +21,7 @@ public enum RiotApiUrl {
 	STATIC_DATA_V3_ITEMS("/lol/static-data/v3/items?itemListData=all&tags=all", "모든 아이템 정보"),
 	STATIC_DATA_V3_ITEM_BY_ID("/lol/static-data/v3/items/{id}?itemData=all&tags=all", "해당 아이디의 아이템 정보"),
 	STATIC_DATA_V3_SUMMONER_SPELLS("/lol/static-data/v3/summoner-spells?spellListData=all&tags=all", "모든 스펠 정보"),
-	STATIC_DATA_V3_SUMMONER_SPELL_BY_ID("/lol/static-data/v3/items/{id}?spellData=all&tags=all", "해당 아이디의 스펠 정보");
+	STATIC_DATA_V3_SUMMONER_SPELL_BY_ID("/lol/static-data/v3/summoner-spells/{id}?spellData=all&tags=all", "해당 아이디의 스펠 정보");
 
 
 

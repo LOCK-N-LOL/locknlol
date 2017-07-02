@@ -7,9 +7,10 @@ import com.locknlol.coukie.adapter.riot.dto.items.ItemListDto;
 import com.locknlol.coukie.adapter.riot.dto.summoner.spells.SummonerSpellDto;
 import com.locknlol.coukie.adapter.riot.dto.summoner.spells.SummonerSpellListDto;
 import com.locknlol.coukie.adapter.staticdatav3.ChampionAdapterService;
-import com.locknlol.coukie.adapter.staticdatav3.ItemInfoAdapterService;
+import com.locknlol.coukie.adapter.staticdatav3.ItemAdapterService;
 import com.locknlol.coukie.adapter.staticdatav3.SummonerSpellInfoAdapterService;
-import com.locknlol.coukie.domain.champion.ChampionInfoSaveService;
+import com.locknlol.coukie.domain.champion.ChampionSaveService;
+import com.locknlol.coukie.domain.item.ItemSaveService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,19 +31,22 @@ import java.util.Map;
 public class StaticDataV3Controller {
 
 	private final ChampionAdapterService championAdapterService;
-	private final ItemInfoAdapterService itemInfoAdapterService;
+	private final ItemAdapterService itemAdapterService;
 	private final SummonerSpellInfoAdapterService summonerSpellInfoAdapterService;
-	private final ChampionInfoSaveService championInfoSaveService;
+	private final ChampionSaveService championSaveService;
+	private final ItemSaveService itemSaveService;
 
 	@Autowired
 	public StaticDataV3Controller(ChampionAdapterService championAdapterService,
-		ItemInfoAdapterService itemInfoAdapterService,
+		ItemAdapterService itemAdapterService,
 		SummonerSpellInfoAdapterService summonerSpellInfoAdapterService,
-		ChampionInfoSaveService championInfoSaveService) {
+		ChampionSaveService championSaveService,
+		ItemSaveService itemSaveService) {
 		this.championAdapterService = championAdapterService;
-		this.itemInfoAdapterService = itemInfoAdapterService;
+		this.itemAdapterService = itemAdapterService;
 		this.summonerSpellInfoAdapterService = summonerSpellInfoAdapterService;
-		this.championInfoSaveService = championInfoSaveService;
+		this.championSaveService = championSaveService;
+		this.itemSaveService = itemSaveService;
 	}
 
 	@ResponseBody
@@ -51,6 +55,13 @@ public class StaticDataV3Controller {
 		return championAdapterService.getChampionById(id);
 
 	}
+
+	@ResponseBody
+	@RequestMapping("/item")
+	private int saveItem() {
+		return itemSaveService.saveAllItems();
+	}
+
 
 	@ResponseBody
 	@RequestMapping("/champions")
@@ -63,14 +74,14 @@ public class StaticDataV3Controller {
 	@ResponseBody
 	@RequestMapping("/items/{id}")
 	private ItemDto getItemById(@PathVariable int id) {
-		return itemInfoAdapterService.getItemById(id);
+		return itemAdapterService.getItemById(id);
 
 	}
 
 	@ResponseBody
 	@RequestMapping("/items")
 	private Map<String, ItemDto> getAllItems() {
-		ItemListDto allItems = itemInfoAdapterService.getAllItems();
+		ItemListDto allItems = itemAdapterService.getAllItems();
 		return allItems.getData();
 	}
 
@@ -91,6 +102,6 @@ public class StaticDataV3Controller {
 	@ResponseBody
 	@RequestMapping("/saveChampions")
 	private int saveAllChampions() {
-		return championInfoSaveService.saveAllChampions();
+		return championSaveService.saveAllChampions();
 	}
 }
