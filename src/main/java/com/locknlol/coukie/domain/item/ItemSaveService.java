@@ -1,15 +1,14 @@
 package com.locknlol.coukie.domain.item;
 
-import com.locknlol.coukie.adapter.riot.dto.items.GoldDto;
-import com.locknlol.coukie.adapter.riot.dto.items.ItemDto;
-import com.locknlol.coukie.adapter.riot.dto.items.ItemImageDto;
-import com.locknlol.coukie.adapter.riot.dto.items.ItemListDto;
+import com.locknlol.coukie.adapter.riot.dto.items.*;
 import com.locknlol.coukie.adapter.staticdatav3.ItemAdapterService;
 import com.locknlol.coukie.domain.common.repository.ImageRepository;
 import com.locknlol.coukie.domain.item.entity.Gold;
+import com.locknlol.coukie.domain.item.entity.InventoryDataStats;
 import com.locknlol.coukie.domain.item.entity.Item;
 import com.locknlol.coukie.domain.item.entity.ItemImage;
 import com.locknlol.coukie.domain.item.repository.GoldRepository;
+import com.locknlol.coukie.domain.item.repository.InventoryDataStatsRepository;
 import com.locknlol.coukie.domain.item.repository.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -34,16 +33,25 @@ public class ItemSaveService {
 	@Autowired
 	private ImageRepository imageRepository;
 
+	@Autowired
+	private InventoryDataStatsRepository inventoryDataStatsRepository;
+
 	public int saveAllItems() {
 		ItemListDto allItems = itemAdapterService.getAllItems();
 		ArrayList<ItemDto> itemDtos = new ArrayList<>(allItems.getData().values());
 		for (ItemDto itemDto : itemDtos) {
 			Item item = itemDto.copiedEntity();
+			item.setStats(saveStats(itemDto.getStats()));
 			item.setGold(saveGold(itemDto.getGold()));
 			item.setImage(saveImage(itemDto.getImage()));
 			itemRepository.save(item);
 		}
 		return itemDtos.size();
+	}
+
+	private InventoryDataStats saveStats(InventoryDataStatsDto stats) {
+		InventoryDataStats inventoryDataStats = stats.copiedEntity();
+		return inventoryDataStatsRepository.save(inventoryDataStats);
 	}
 
 	private ItemImage saveImage(ItemImageDto imageDto) {

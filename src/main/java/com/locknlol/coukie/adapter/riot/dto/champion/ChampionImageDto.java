@@ -8,7 +8,7 @@ import lombok.Data;
  * Created by kev on 2017. 5. 25.
  */
 @Data
-public class ChampionImageDto extends ImageDto {
+public class ChampionImageDto extends ImageDto<ChampionImage> {
 
 	@Override
 	public ChampionImage getNewEntity() {

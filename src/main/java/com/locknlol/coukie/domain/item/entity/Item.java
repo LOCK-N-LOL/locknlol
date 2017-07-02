@@ -5,6 +5,7 @@ import lombok.Setter;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.OneToOne;
 import java.util.List;
 
@@ -18,9 +19,11 @@ public class Item {
 	//private List<String> tags;
 	@Id
 	private String id;
+	@Lob
 	private String sanitizedDescription;
 	private String plaintext;
 	//private Map<String, Boolean> maps;
+	@Lob
 	private String description;
 	@OneToOne
 	private InventoryDataStats stats;

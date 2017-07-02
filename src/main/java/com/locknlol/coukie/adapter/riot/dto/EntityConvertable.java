@@ -10,7 +10,7 @@ public interface EntityConvertable<EntityType> {
 
 	default EntityType copiedEntity() {
 		EntityType entity = getNewEntity();
-		BeanUtils.copyProperties(entity, this);
+		BeanUtils.copyProperties(this, entity);
 		return entity;
 	}
 }

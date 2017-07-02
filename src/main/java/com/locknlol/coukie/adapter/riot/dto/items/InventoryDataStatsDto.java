@@ -1,6 +1,7 @@
 package com.locknlol.coukie.adapter.riot.dto.items;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.locknlol.coukie.adapter.riot.dto.EntityConvertable;
 import com.locknlol.coukie.domain.item.entity.InventoryDataStats;
 import lombok.Data;
@@ -12,7 +13,9 @@ import lombok.Data;
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class InventoryDataStatsDto implements EntityConvertable<InventoryDataStats> {
+    @JsonProperty("PercentCritDamageMod")
     private Double percentCritDamageMod;
+    @JsonProperty("PercentSpellBlockMod")
     private Double percentSpellBlockMod;
     private Double percentHPRegenMod;
     private Double percentMovementSpeedMod;
