@@ -34,11 +34,9 @@ export default class extends React.Component {
 
     render() {
         return (
-            <div>
-                <input value={this.state.value}
-                       onChange={this.handleChange}
-                       onKeyPress={this.handleSubmit} />
-            </div>
+            <input value={this.state.value}
+                   onChange={this.handleChange}
+                   onKeyPress={this.handleSubmit} />
         );
     }
 }

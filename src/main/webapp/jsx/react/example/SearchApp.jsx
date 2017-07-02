@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import SearchUser from './SearchUser';
 import UserList from './UserList';
+// import styles from '../../../sass/react/example/searchApp.scss';
 
 class SearchApp extends React.Component {
     constructor(props) {

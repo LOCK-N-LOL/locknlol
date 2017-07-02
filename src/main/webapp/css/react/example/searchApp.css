@@ -1,0 +1,21 @@
+#reactExample input {
+  border: 1px solid black;
+  width: 100%;
+}
+
+#reactExample ul {
+  border: solid blue;
+  border-width: 0 1px 1px 1px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+#reactExample li {
+  padding: 1px 2px;
+}
+
+#reactExample li:hover {
+  background: lightblue;
+}
