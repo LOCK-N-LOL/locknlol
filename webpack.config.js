@@ -56,7 +56,7 @@ const react = {
     },
 
     resolve: {
-        extensions: ['.js', '.jsx']
+        extensions: ['.js', '.jsx', '.css', '.scss']
     },
 
     plugins: [],
@@ -76,6 +76,20 @@ const react = {
                         plugins: ['transform-runtime']
                     }
                 }
+            },
+            {
+                test: /\.css$/,
+                use: [ 'style-loader', 'css-loader' ]
+            },
+            {
+                test: /\.scss$/,
+                use: [{
+                    loader: "style-loader" // creates style nodes from JS strings
+                }, {
+                    loader: "css-loader" // translates CSS into CommonJS
+                }, {
+                    loader: "sass-loader?outputStyle=compressed&sourceMap=true&sourceMapContents=true" // compiles Sass to CSS
+                }]
             }
         ]
     }
