@@ -15,6 +15,7 @@ public enum RiotApiUrl {
 	MATCH_BY_MATCHID("/lol/match/v3/matches/{matchId}", "해당 게임의 상세 정보"),
 	All_MATCH("/lol/match/v3/matchlists/by-account/{accountId}", "시즌별 모든 랭크 게임 정보"),
 	ALL_LEAGUES("/lol/league/v3/leagues/by-summoner/{summonerId}", "리그전 정보"),
+	LEAGUE_POSITION("/lol/league/v3/positions/by-summoner/{summonerId}", "리그 포지션"),
 	RUNE_PAGES("/lol/platform/v3/runes/by-summoner/{summonerId}", "룬 페이지 정보"),
 	//STATIC_DATA_V3_CHAMPION_ALL("/lol/static-data/v3/champions?champListData=all", "모든 챔피언 정보"),
 	STATIC_DATA_V3_CHAMPION_ALL("/lol/static-data/v3/champions?locale=ko_KR&tags=image&tags=info&tags=spells&tags=passive&dataById=true", "모든 챔피언 정보"),

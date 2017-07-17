@@ -1,13 +1,12 @@
 package com.locknlol.coukie.adapter.riot;
 
 import com.locknlol.coukie.adapter.RiotAdapter;
+import com.locknlol.coukie.adapter.riot.dto.*;
 import com.locknlol.coukie.adapter.riot.dto.rune.RiotRunePagesResponse;
-import com.locknlol.coukie.adapter.riot.dto.RiotLeaguesBySummonerIdDto;
-import com.locknlol.coukie.adapter.riot.dto.RiotMatchByMatchIdDto;
-import com.locknlol.coukie.adapter.riot.dto.RiotMatchDto;
-import com.locknlol.coukie.adapter.riot.dto.RiotSummonerByNameDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * Created by Oscar on 2017. 6. 4..
@@ -40,5 +39,9 @@ public class RiotAdapterService {
 
 	public RiotRunePagesResponse getRunePagesDetailInfo(Long summonerId) {
 		return riotAdapter.get(RiotRequests.RUNE_PAGES, RiotAdapterParameter.getSummonerId(summonerId));
+	}
+
+	public List<LeaguePositionDto> getLeaguePosition(Long summonerId) {
+		return riotAdapter.get(RiotRequests.LEAGUE_POSITION, RiotAdapterParameter.getSummonerId(summonerId));
 	}
 }
