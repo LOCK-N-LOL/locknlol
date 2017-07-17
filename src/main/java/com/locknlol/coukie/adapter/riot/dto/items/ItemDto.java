@@ -1,8 +1,6 @@
 package com.locknlol.coukie.adapter.riot.dto.items;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.locknlol.coukie.adapter.riot.dto.EntityConvertable;
-import com.locknlol.coukie.domain.item.entity.Item;
 import lombok.Data;
 
 import java.util.List;
@@ -14,7 +12,7 @@ import java.util.Map;
  */
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class ItemDto implements EntityConvertable<Item>{
+public class ItemDto{
     private List<String> tags;
     private String id;
     private String sanitizedDescription;
@@ -40,8 +38,4 @@ public class ItemDto implements EntityConvertable<Item>{
     private Integer depth;
     private Integer stacks;
 
-    @Override
-    public Item getNewEntity() {
-        return new Item();
-    }
 }

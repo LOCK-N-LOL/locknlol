@@ -25,8 +25,8 @@ public class Item {
 	//private Map<String, Boolean> maps;
 	@Lob
 	private String description;
-	@OneToOne
-	private InventoryDataStats stats;
+	//@OneToOne
+	//private InventoryDataStats stats;
 	private String name;
 	//private List<Item> into;
 	@OneToOne

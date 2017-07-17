@@ -32,12 +32,12 @@ public class SummonerSpellInfoAdapterService {
             throw new DataRetrievalFailureException("Cannot find a summoner-spell: summoner-spell="+id, e);
         }
     }
-
+/*
     public SummonerSpellListDto getAllSummonerSpells() {
         try {
             return riotAdapter.get(RiotRequests.SUMMONER_SPELLS);
         } catch (Exception e) {
             throw new DataRetrievalFailureException("Cannot find summoner-spells", e);
         }
-    }
+    }*/
 }

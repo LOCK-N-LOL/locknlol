@@ -27,11 +27,11 @@ public class Champion {
 	@OneToOne
 	private ChampionImage image;
 
-	@OneToMany
-	@JoinColumn
-	public List<ChampionTags> tags = new ArrayList<>();
+	//@OneToMany
+	//@JoinColumn
+	//public List<ChampionTags> tags = new ArrayList<>();
 
-	private String partype;
+	//private String partype;
 
 	@OneToOne
 	private ChampionInfo info;

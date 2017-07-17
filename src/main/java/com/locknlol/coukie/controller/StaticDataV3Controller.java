@@ -49,12 +49,12 @@ public class StaticDataV3Controller {
 		this.itemSaveService = itemSaveService;
 	}
 
-	@ResponseBody
+/*	@ResponseBody
 	@RequestMapping("/champions/{id}")
 	private ChampionDto getChampById(@PathVariable int id) {
 		return championAdapterService.getChampionById(id);
 
-	}
+	}*/
 
 	@ResponseBody
 	@RequestMapping("/item")
@@ -71,12 +71,12 @@ public class StaticDataV3Controller {
 		return new ArrayList<>(championDtoMap.values());
 	}
 
-	@ResponseBody
+	/*@ResponseBody
 	@RequestMapping("/items/{id}")
 	private ItemDto getItemById(@PathVariable int id) {
 		return itemAdapterService.getItemById(id);
 
-	}
+	}*/
 
 	@ResponseBody
 	@RequestMapping("/items")
@@ -92,12 +92,12 @@ public class StaticDataV3Controller {
 
 	}
 
-	@ResponseBody
+/*	@ResponseBody
 	@RequestMapping("/summonerSpells")
 	private Map<String, SummonerSpellDto> getAllSummonerSpells() {
 		SummonerSpellListDto allItems = summonerSpellInfoAdapterService.getAllSummonerSpells();
 		return allItems.getData();
-	}
+	}*/
 
 	@ResponseBody
 	@RequestMapping("/saveChampions")

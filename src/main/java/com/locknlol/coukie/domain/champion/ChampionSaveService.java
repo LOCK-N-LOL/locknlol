@@ -4,9 +4,13 @@ import com.locknlol.coukie.adapter.riot.dto.ImageDto;
 import com.locknlol.coukie.adapter.riot.dto.champion.*;
 import com.locknlol.coukie.adapter.staticdatav3.ChampionAdapterService;
 import com.locknlol.coukie.domain.champion.entity.*;
-import com.locknlol.coukie.domain.champion.repository.*;
+import com.locknlol.coukie.domain.champion.repository.ChampionInfoRepository;
+import com.locknlol.coukie.domain.champion.repository.ChampionPassiveRepository;
+import com.locknlol.coukie.domain.champion.repository.ChampionRepository;
+import com.locknlol.coukie.domain.champion.repository.ChampionSpellRepository;
 import com.locknlol.coukie.domain.common.entity.Image;
 import com.locknlol.coukie.domain.common.repository.ImageRepository;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,9 +36,6 @@ public class ChampionSaveService {
 	private ChampionPassiveRepository championPassiveRepository;
 
 	@Autowired
-	private ChampionTagsRepository championTagsRepository;
-
-	@Autowired
 	private ChampionSpellRepository championSpellRepository;
 
 	@Autowired
@@ -51,13 +52,14 @@ public class ChampionSaveService {
 	}
 
 	private Champion saveChampion(ChampionDto championDto) {
-		Champion champion = championDto.copiedEntity();
+		Champion champion = new Champion();
+		BeanUtils.copyProperties(championDto, champion);
 
 		List<ChampionSpell> spells = new ArrayList<>();
 		championDto.getSpells().forEach(championSpellDto ->
 			spells.add(saveChampionSpell(championSpellDto)));
 		champion.setSpells(spells);
-		champion.setTags(saveChampionTags(championDto.getTags()));
+		//champion.setTags(saveChampionTags(championDto.getTags()));
 		champion.setInfo(saveChampionInfo(championDto.getInfo()));
 		champion.setPassive(saveChampionPassive(championDto.getPassive()));
 		champion.setImage((ChampionImage) saveImage(championDto.getImage()));
@@ -66,12 +68,13 @@ public class ChampionSaveService {
 	}
 
 	private ChampionSpell saveChampionSpell(ChampionSpellDto championSpellDto) {
-		ChampionSpell championSpell = championSpellDto.copiedEntity();
+		ChampionSpell championSpell = new ChampionSpell();
+		BeanUtils.copyProperties(championSpellDto, championSpell);
 		championSpell.setImage((ChampionSpellImage) saveImage(championSpellDto.getImage()));
 		return championSpellRepository.save(championSpell);
 	}
 
-	private List<ChampionTags> saveChampionTags(List<String> tags) {
+	/*private List<ChampionTags> saveChampionTags(List<String> tags) {
 		List<ChampionTags> championTagsList = new ArrayList<>();
 		for (String tag : tags) {
 			ChampionTags championTags = new ChampionTags();
@@ -79,15 +82,17 @@ public class ChampionSaveService {
 			championTagsList.add(championTagsRepository.save(championTags));
 		}
 		return championTagsList;
-	}
+	}*/
 
 	private ChampionInfo saveChampionInfo(ChampionInfoDto championInfoDto) {
-		ChampionInfo championInfo = championInfoDto.copiedEntity();
+		ChampionInfo championInfo = new ChampionInfo();
+		BeanUtils.copyProperties(championInfoDto, championInfo);
 		return championInfoRepository.save(championInfo);
 	}
 
 	private ChampionPassive saveChampionPassive(ChampionPassiveDto championPassiveDto) {
-		ChampionPassive championPassive = championPassiveDto.copiedEntity();
+		ChampionPassive championPassive = new ChampionPassive();
+		BeanUtils.copyProperties(championPassiveDto, championPassive);
 		championPassive.setImage((ChampionPassiveImage) saveImage(championPassiveDto.getImage()));
 		return championPassiveRepository.save(championPassive);
 	}

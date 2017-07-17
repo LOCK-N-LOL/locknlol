@@ -16,11 +16,11 @@ public enum RiotApiUrl {
 	All_MATCH("/lol/match/v3/matchlists/by-account/{accountId}", "시즌별 모든 랭크 게임 정보"),
 	ALL_LEAGUES("/lol/league/v3/leagues/by-summoner/{summonerId}", "리그전 정보"),
 	RUNE_PAGES("/lol/platform/v3/runes/by-summoner/{summonerId}", "룬 페이지 정보"),
-	STATIC_DATA_V3_CHAMPION_ALL("/lol/static-data/v3/champions?champListData=all", "모든 챔피언 정보"),
-	STATIC_DATA_V3_CHAMPION_BY_ID("/lol/static-data/v3/champions/{id}?champData=all", "해당 아이디의 챔피언 정보"),
-	STATIC_DATA_V3_ITEMS("/lol/static-data/v3/items?itemListData=all&tags=all", "모든 아이템 정보"),
-	STATIC_DATA_V3_ITEM_BY_ID("/lol/static-data/v3/items/{id}?itemData=all&tags=all", "해당 아이디의 아이템 정보"),
-	STATIC_DATA_V3_SUMMONER_SPELLS("/lol/static-data/v3/summoner-spells?spellListData=all&tags=all", "모든 스펠 정보"),
+	//STATIC_DATA_V3_CHAMPION_ALL("/lol/static-data/v3/champions?champListData=all", "모든 챔피언 정보"),
+	STATIC_DATA_V3_CHAMPION_ALL("/lol/static-data/v3/champions?locale=ko_KR&tags=image&tags=info&tags=spells&tags=passive&dataById=true", "모든 챔피언 정보"),
+	STATIC_DATA_V3_ITEMS("/lol/static-data/v3/items?locale=ko_KR&tags=image", "모든 아이템 정보"),
+	//STATIC_DATA_V3_ITEM_BY_ID("/lol/static-data/v3/items/{id}?itemData=all&tags=all", "해당 아이디의 아이템 정보"),
+	//STATIC_DATA_V3_SUMMONER_SPELLS("/lol/static-data/v3/summoner-spells?spellListData=all&tags=all", "모든 스펠 정보"),
 	STATIC_DATA_V3_SUMMONER_SPELL_BY_ID("/lol/static-data/v3/summoner-spells/{id}?spellData=all&tags=all", "해당 아이디의 스펠 정보");
 
 

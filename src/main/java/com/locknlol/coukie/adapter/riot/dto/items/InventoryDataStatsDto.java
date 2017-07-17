@@ -2,8 +2,6 @@ package com.locknlol.coukie.adapter.riot.dto.items;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.locknlol.coukie.adapter.riot.dto.EntityConvertable;
-import com.locknlol.coukie.domain.item.entity.InventoryDataStats;
 import lombok.Data;
 
 /**
@@ -12,7 +10,7 @@ import lombok.Data;
  */
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class InventoryDataStatsDto implements EntityConvertable<InventoryDataStats> {
+public class InventoryDataStatsDto {
     @JsonProperty("PercentCritDamageMod")
     private Double percentCritDamageMod;
     @JsonProperty("PercentSpellBlockMod")
@@ -48,10 +46,5 @@ public class InventoryDataStatsDto implements EntityConvertable<InventoryDataSta
     private Double flatHPPoolMod;
     private Double flatCritChanceMod;
     private Double flatEXPBonus;
-
-    @Override
-    public InventoryDataStats getNewEntity() {
-        return new InventoryDataStats();
-    }
 
 }

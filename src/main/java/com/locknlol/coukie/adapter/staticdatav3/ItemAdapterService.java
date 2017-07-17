@@ -25,13 +25,13 @@ public class ItemAdapterService {
 		this.riotAdapter = riotAdapter;
 	}
 
-	public ItemDto getItemById(int id) {
+	/*public ItemDto getItemById(int id) {
 		try {
 			return riotAdapter.get(RiotRequests.ITEM_BY_ID, Collections.singletonMap("id", id));
 		} catch (Exception e) {
 			throw new DataRetrievalFailureException("Cannot find a item: itemId="+id, e);
 		}
-	}
+	}*/
 
 	public ItemListDto getAllItems() {
 		try {

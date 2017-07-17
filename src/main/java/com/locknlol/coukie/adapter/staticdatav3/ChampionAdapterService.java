@@ -24,13 +24,13 @@ public class ChampionAdapterService {
 		this.riotAdapter = riotAdapter;
 	}
 
-	public ChampionDto getChampionById(int id) {
+/*	public ChampionDto getChampionById(int id) {
 		try {
 			return riotAdapter.get(RiotRequests.CHAMPOION_BY_ID, Collections.singletonMap("id", id));
 		} catch (Exception e) {
 			throw new DataRetrievalFailureException("Cannot find a champion: championId="+id, e);
 		}
-	}
+	}*/
 
 	public ChampionListDto getAllChampion() {
 		try {
