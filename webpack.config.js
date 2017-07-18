@@ -61,7 +61,7 @@ const react = {
 
     plugins: [],
 
-    devtool: 'eval',
+    devtool: 'source-map',
 
     module: {
         rules: [

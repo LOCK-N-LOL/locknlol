@@ -4,6 +4,7 @@
 node_modules/
 bower_components/
 src/generated
+src/main/webapp/js/
 
 ### STS ###
 .apt_generated
