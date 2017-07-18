@@ -6,6 +6,7 @@ import com.locknlol.coukie.adapter.riot.dto.rune.RiotRunePagesResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -42,6 +43,7 @@ public class RiotAdapterService {
 	}
 
 	public List<LeaguePositionDto> getLeaguePosition(Long summonerId) {
-		return riotAdapter.get(RiotRequests.LEAGUE_POSITION, RiotAdapterParameter.getSummonerId(summonerId));
+		LeaguePositionDto[] leaguePositionDtos = riotAdapter.get(RiotRequests.LEAGUE_POSITION, RiotAdapterParameter.getSummonerId(summonerId));
+		return Arrays.asList(leaguePositionDtos);
 	}
 }

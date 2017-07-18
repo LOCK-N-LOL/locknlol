@@ -10,7 +10,10 @@ import com.locknlol.coukie.adapter.staticdatav3.ChampionAdapterService;
 import com.locknlol.coukie.adapter.staticdatav3.ItemAdapterService;
 import com.locknlol.coukie.adapter.staticdatav3.SummonerSpellInfoAdapterService;
 import com.locknlol.coukie.domain.champion.ChampionSaveService;
+import com.locknlol.coukie.domain.champion.entity.Champion;
+import com.locknlol.coukie.domain.champion.repository.ChampionRepository;
 import com.locknlol.coukie.domain.item.ItemSaveService;
+import com.locknlol.coukie.domain.item.repository.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -35,18 +38,21 @@ public class StaticDataV3Controller {
 	private final SummonerSpellInfoAdapterService summonerSpellInfoAdapterService;
 	private final ChampionSaveService championSaveService;
 	private final ItemSaveService itemSaveService;
+	private final ChampionRepository championRepository;
 
 	@Autowired
 	public StaticDataV3Controller(ChampionAdapterService championAdapterService,
 		ItemAdapterService itemAdapterService,
 		SummonerSpellInfoAdapterService summonerSpellInfoAdapterService,
 		ChampionSaveService championSaveService,
-		ItemSaveService itemSaveService) {
+		ItemSaveService itemSaveService,
+		ChampionRepository championRepository) {
 		this.championAdapterService = championAdapterService;
 		this.itemAdapterService = itemAdapterService;
 		this.summonerSpellInfoAdapterService = summonerSpellInfoAdapterService;
 		this.championSaveService = championSaveService;
 		this.itemSaveService = itemSaveService;
+		this.championRepository = championRepository;
 	}
 
 /*	@ResponseBody
@@ -57,7 +63,7 @@ public class StaticDataV3Controller {
 	}*/
 
 	@ResponseBody
-	@RequestMapping("/item")
+	@RequestMapping("/saveItem")
 	private int saveItem() {
 		return itemSaveService.saveAllItems();
 	}
@@ -69,6 +75,13 @@ public class StaticDataV3Controller {
 		ChampionListDto allChampion = championAdapterService.getAllChampion();
 		Map<String, ChampionDto> championDtoMap = allChampion.getChampionMap();
 		return new ArrayList<>(championDtoMap.values());
+	}
+
+	@RequestMapping("/getChampionImage")
+	@ResponseBody
+	private String getChampionImage(String id) {
+		Champion one = championRepository.findOne(Long.parseLong(id));
+		return one.getImage().getImgUrl();
 	}
 
 	/*@ResponseBody

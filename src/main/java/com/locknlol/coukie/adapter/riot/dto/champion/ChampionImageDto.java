@@ -14,4 +14,9 @@ public class ChampionImageDto extends ImageDto<ChampionImage> {
 	public ChampionImage getNewEntity() {
 		return new ChampionImage();
 	}
+
+	@Override
+	public String getFull() {
+		return "champion/" + super.getFull();
+	}
 }

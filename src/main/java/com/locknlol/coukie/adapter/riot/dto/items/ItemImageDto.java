@@ -15,4 +15,9 @@ public class ItemImageDto extends ImageDto {
 	public Image getNewEntity() {
 		return new ItemImage();
 	}
+
+	@Override
+	public String getFull() {
+		return "item/" + super.getFull();
+	}
 }

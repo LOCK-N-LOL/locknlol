@@ -13,4 +13,9 @@ public class ChampionSpellImageDto extends ImageDto{
 	public ChampionSpellImage getNewEntity() {
 		return new ChampionSpellImage();
 	}
+
+	@Override
+	public String getFull() {
+		return "spell/" + super.getFull();
+	}
 }

@@ -31,4 +31,8 @@ public abstract class Image {
 
 	private Long h;
 
+	public String getImgUrl() {
+		return "https://ddragon.leagueoflegends.com/cdn/7.10.1/img/" + getFull();
+	}
+
 }

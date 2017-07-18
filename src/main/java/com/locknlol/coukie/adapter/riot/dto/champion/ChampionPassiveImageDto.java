@@ -14,4 +14,9 @@ public class ChampionPassiveImageDto extends ImageDto {
 	public ChampionPassiveImage getNewEntity() {
 		return new ChampionPassiveImage();
 	}
+
+	@Override
+	public String getFull() {
+		return "passive/" + super.getFull();
+	}
 }
