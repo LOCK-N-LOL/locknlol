@@ -20,13 +20,13 @@ class LeaguePosition extends React.Component {
                     </div>
                     <div className="col-md-6">
                         <div className="row">
-                            {this.props.data.queueType}
+                            {this.props.queueType}
                         </div>
                         <div className="row">
-                            {this.props.data.tier} {this.props.data.rank}
+                            {this.props.tier} {this.props.rank}
                         </div>
                         <div className="row">
-                            포인트 : {this.props.data.leaguePoints}LP {this.props.data.wins}승 {this.props.data.losses}패
+                            포인트 : {this.props.leaguePoints}LP {this.props.wins}승 {this.props.losses}패
                         </div>
                         <div className="row">
                             승률 :
@@ -64,7 +64,7 @@ export default class extends React.Component {
     render() {
         const leaguePositionComponent = [];
         this.state.leaguePositions.forEach((leaguePosition) => {
-            leaguePositionComponent.push(<LeaguePosition data={leaguePosition} imageSrc={"https://opgg-static.akamaized.net/images/medals/challenger_1.png"}/>)
+            leaguePositionComponent.push(<LeaguePosition {...leaguePosition} imageSrc={"https://opgg-static.akamaized.net/images/medals/challenger_1.png"}/>)
         });
 
         return (
