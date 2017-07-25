@@ -52,7 +52,7 @@ public class RiotSummonerService {
     public Long getSummonerIdBySummonerName(String summonerName) {
         Summoner summonerInfo = summonerFindService.findBySummonerName(summonerName);
         if (summonerInfo != null) {
-            return summonerInfo.getId();
+            return summonerInfo.getSummonerId();
         }
 
         RiotSummonerByNameDto response = getSummonerByName(summonerName);
