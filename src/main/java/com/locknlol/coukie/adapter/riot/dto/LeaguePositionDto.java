@@ -26,12 +26,12 @@ public class LeaguePositionDto {
 	private String tier;
 	private int leaguePoints;
 
-	public double getWinRate() {
-		return wins / losses + wins;
+	public String getWinRate() {
+		return String.format("%.2f", ((double) wins / (losses + wins)) * 100.00);
 	}
 
 	public String getRankImg() {
-		return "https://opgg-static.akamaized.net/images/medals/" + tier + "_" + getRankAsNum() + ".png";
+		return "https://opgg-static.akamaized.net/images/medals/" + getTier() + "_" + getRankAsNum() + ".png";
 	}
 
 	private int getRankAsNum() {
@@ -49,5 +49,9 @@ public class LeaguePositionDto {
 			default:
 				return 0;
 		}
+	}
+
+	private String getTier() {
+		return tier.toLowerCase();
 	}
 }

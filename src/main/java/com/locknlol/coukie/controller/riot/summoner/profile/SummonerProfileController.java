@@ -31,7 +31,7 @@ public class SummonerProfileController {
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String view() {
-		return "/summoner/profile/league_positions";
+		return "/league/position";
 	}
 
 	@RequestMapping(value = "/league/position", method = RequestMethod.GET)
