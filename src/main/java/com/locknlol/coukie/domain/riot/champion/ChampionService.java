@@ -1,8 +1,8 @@
-package com.locknlol.coukie.domain.champion;
+package com.locknlol.coukie.domain.riot.champion;
 
 import com.google.common.base.Preconditions;
-import com.locknlol.coukie.domain.champion.entity.Champion;
-import com.locknlol.coukie.domain.champion.repository.ChampionRepository;
+import com.locknlol.coukie.domain.riot.champion.entity.Champion;
+import com.locknlol.coukie.domain.riot.champion.repository.ChampionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

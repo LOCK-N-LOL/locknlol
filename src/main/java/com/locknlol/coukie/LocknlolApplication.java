@@ -6,15 +6,16 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.StringHttpMessageConverter;
+import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.concurrent.ScheduledExecutorFactoryBean;
 import org.springframework.web.filter.CharacterEncodingFilter;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import javax.servlet.Filter;
 import java.nio.charset.Charset;
 
-import org.springframework.context.annotation.Bean;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
-
+@EnableScheduling
 @SpringBootApplication
 public class LocknlolApplication {
 
@@ -43,5 +44,12 @@ public class LocknlolApplication {
 				registry.addInterceptor(new LoginInterceptor());
 			}
 		};
+	}
+
+	@Bean
+	public ScheduledExecutorFactoryBean scheduledExecutorService() {
+		ScheduledExecutorFactoryBean bean = new ScheduledExecutorFactoryBean();
+		bean.setPoolSize(5);
+		return bean;
 	}
 }

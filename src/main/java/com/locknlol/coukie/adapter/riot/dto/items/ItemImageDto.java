@@ -2,7 +2,7 @@ package com.locknlol.coukie.adapter.riot.dto.items;
 
 import com.locknlol.coukie.adapter.riot.dto.ImageDto;
 import com.locknlol.coukie.domain.common.entity.Image;
-import com.locknlol.coukie.domain.item.entity.ItemImage;
+import com.locknlol.coukie.domain.riot.item.entity.ItemImage;
 import lombok.Data;
 
 /**

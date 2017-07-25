@@ -1,7 +1,7 @@
 package com.locknlol.coukie.adapter.riot.dto.champion;
 
 import com.locknlol.coukie.adapter.riot.dto.ImageDto;
-import com.locknlol.coukie.domain.champion.entity.ChampionPassiveImage;
+import com.locknlol.coukie.domain.riot.champion.entity.ChampionPassiveImage;
 import lombok.Data;
 
 /**

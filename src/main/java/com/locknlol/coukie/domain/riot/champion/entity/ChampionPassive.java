@@ -1,4 +1,4 @@
-package com.locknlol.coukie.domain.champion.entity;
+package com.locknlol.coukie.domain.riot.champion.entity;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -11,17 +11,18 @@ import javax.persistence.*;
 @Entity
 @Getter
 @Setter
-public class ChampionInfo {
+public class ChampionPassive {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
-	private Long attack;
+	private String name;
 
-	private Long defense;
+	@Lob
+	private String description;
 
-	private Long magic;
+	@OneToOne
+	private ChampionPassiveImage image;
 
-	private Long difficulty;
 
 }

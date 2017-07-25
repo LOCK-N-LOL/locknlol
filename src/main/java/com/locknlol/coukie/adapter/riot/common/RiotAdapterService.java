@@ -1,6 +1,8 @@
-package com.locknlol.coukie.adapter.riot;
+package com.locknlol.coukie.adapter.riot.common;
 
 import com.locknlol.coukie.adapter.RiotAdapter;
+import com.locknlol.coukie.adapter.riot.RiotAdapterParameter;
+import com.locknlol.coukie.adapter.riot.RiotRequests;
 import com.locknlol.coukie.adapter.riot.dto.*;
 import com.locknlol.coukie.adapter.riot.dto.rune.RiotRunePagesResponse;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -25,4 +25,29 @@ public class LeaguePositionDto {
 	private boolean freshBlood;
 	private String tier;
 	private int leaguePoints;
+
+	public double getWinRate() {
+		return wins / losses + wins;
+	}
+
+	public String getRankImg() {
+		return "https://opgg-static.akamaized.net/images/medals/" + tier + "_" + getRankAsNum() + ".png";
+	}
+
+	private int getRankAsNum() {
+		switch (rank) {
+			case "I":
+				return 1;
+			case "II":
+				return 2;
+			case "III":
+				return 3;
+			case "IV":
+				return 4;
+			case "V":
+				return 5;
+			default:
+				return 0;
+		}
+	}
 }

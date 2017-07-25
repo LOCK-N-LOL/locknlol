@@ -1,4 +1,4 @@
-package com.locknlol.coukie.domain.item.entity;
+package com.locknlol.coukie.domain.riot.champion.entity;
 
 import com.locknlol.coukie.domain.common.entity.Image;
 import lombok.Getter;
@@ -8,11 +8,11 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 /**
- * Created by kev on 2017. 7. 2.
+ * Created by kev on 2017. 5. 25.
  */
 @Entity
 @Getter
 @Setter
-@DiscriminatorValue("Item")
-public class ItemImage extends Image {
+@DiscriminatorValue("ChampionPassive")
+public class ChampionPassiveImage extends Image {
 }

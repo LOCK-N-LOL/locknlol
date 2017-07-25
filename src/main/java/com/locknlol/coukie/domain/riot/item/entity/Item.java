@@ -1,4 +1,4 @@
-package com.locknlol.coukie.domain.item.entity;
+package com.locknlol.coukie.domain.riot.item.entity;
 
 import lombok.Getter;
 import lombok.Setter;

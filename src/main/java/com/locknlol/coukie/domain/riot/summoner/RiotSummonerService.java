@@ -1,7 +1,7 @@
 package com.locknlol.coukie.domain.riot.summoner;
 
 import com.locknlol.coukie.adapter.riot.dto.RiotSummonerByNameDto;
-import com.locknlol.coukie.adapter.riot.RiotAdapterService;
+import com.locknlol.coukie.adapter.riot.common.RiotAdapterService;
 import com.locknlol.coukie.domain.riot.exception.RiotErrorCode;
 import com.locknlol.coukie.domain.riot.exception.RiotException;
 import lombok.extern.slf4j.Slf4j;

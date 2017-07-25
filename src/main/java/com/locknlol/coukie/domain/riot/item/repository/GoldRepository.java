@@ -1,6 +1,6 @@
-package com.locknlol.coukie.domain.item.repository;
+package com.locknlol.coukie.domain.riot.item.repository;
 
-import com.locknlol.coukie.domain.item.entity.Gold;
+import com.locknlol.coukie.domain.riot.item.entity.Gold;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

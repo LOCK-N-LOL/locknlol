@@ -1,17 +1,18 @@
-package com.locknlol.coukie.domain.champion;
+package com.locknlol.coukie.domain.riot.champion;
 
 import com.locknlol.coukie.adapter.riot.dto.ImageDto;
 import com.locknlol.coukie.adapter.riot.dto.champion.*;
-import com.locknlol.coukie.adapter.staticdatav3.ChampionAdapterService;
-import com.locknlol.coukie.domain.champion.entity.*;
-import com.locknlol.coukie.domain.champion.repository.ChampionInfoRepository;
-import com.locknlol.coukie.domain.champion.repository.ChampionPassiveRepository;
-import com.locknlol.coukie.domain.champion.repository.ChampionRepository;
-import com.locknlol.coukie.domain.champion.repository.ChampionSpellRepository;
+import com.locknlol.coukie.adapter.riot.staticdatav3.ChampionAdapterService;
+import com.locknlol.coukie.domain.riot.champion.entity.*;
+import com.locknlol.coukie.domain.riot.champion.repository.ChampionInfoRepository;
+import com.locknlol.coukie.domain.riot.champion.repository.ChampionPassiveRepository;
+import com.locknlol.coukie.domain.riot.champion.repository.ChampionRepository;
+import com.locknlol.coukie.domain.riot.champion.repository.ChampionSpellRepository;
 import com.locknlol.coukie.domain.common.entity.Image;
 import com.locknlol.coukie.domain.common.repository.ImageRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -21,7 +22,7 @@ import java.util.List;
  * Created by kev on 2017. 6. 5.
  */
 @Service
-public class ChampionSaveService {
+public class ChampionSaveBatchService {
 
 	@Autowired
 	private ChampionAdapterService championAdapterService;
@@ -41,6 +42,8 @@ public class ChampionSaveService {
 	@Autowired
 	private ImageRepository imageRepository;
 
+
+	@Scheduled(fixedDelay = 1000*60*60*12)
 	public int saveAllChampions() {
 		ChampionListDto allChampion = championAdapterService.getAllChampion();
 		List<ChampionDto> allChampionList = new ArrayList<>(allChampion.getChampionMap().values());
@@ -59,7 +62,6 @@ public class ChampionSaveService {
 		championDto.getSpells().forEach(championSpellDto ->
 			spells.add(saveChampionSpell(championSpellDto)));
 		champion.setSpells(spells);
-		//champion.setTags(saveChampionTags(championDto.getTags()));
 		champion.setInfo(saveChampionInfo(championDto.getInfo()));
 		champion.setPassive(saveChampionPassive(championDto.getPassive()));
 		champion.setImage((ChampionImage) saveImage(championDto.getImage()));
@@ -74,15 +76,6 @@ public class ChampionSaveService {
 		return championSpellRepository.save(championSpell);
 	}
 
-	/*private List<ChampionTags> saveChampionTags(List<String> tags) {
-		List<ChampionTags> championTagsList = new ArrayList<>();
-		for (String tag : tags) {
-			ChampionTags championTags = new ChampionTags();
-			championTags.setName(tag);
-			championTagsList.add(championTagsRepository.save(championTags));
-		}
-		return championTagsList;
-	}*/
 
 	private ChampionInfo saveChampionInfo(ChampionInfoDto championInfoDto) {
 		ChampionInfo championInfo = new ChampionInfo();

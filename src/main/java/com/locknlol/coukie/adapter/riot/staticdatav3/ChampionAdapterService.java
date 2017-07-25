@@ -1,15 +1,11 @@
-package com.locknlol.coukie.adapter.staticdatav3;
+package com.locknlol.coukie.adapter.riot.staticdatav3;
 
 import com.locknlol.coukie.adapter.RiotAdapter;
-import com.locknlol.coukie.adapter.riot.RiotApiUrl;
 import com.locknlol.coukie.adapter.riot.RiotRequests;
-import com.locknlol.coukie.adapter.riot.dto.champion.ChampionDto;
 import com.locknlol.coukie.adapter.riot.dto.champion.ChampionListDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataRetrievalFailureException;
 import org.springframework.stereotype.Service;
-
-import java.util.Collections;
 
 /**
  * Created by kev on 2017. 5. 25.
