@@ -1,6 +1,6 @@
 package com.locknlol.coukie.adapter.riot.staticdatav3;
 
-import com.locknlol.coukie.adapter.RiotAdapter;
+import com.locknlol.coukie.adapter.riot.RiotAdapter;
 import com.locknlol.coukie.adapter.riot.RiotRequests;
 import com.locknlol.coukie.adapter.riot.dto.items.ItemListDto;
 import org.springframework.beans.factory.annotation.Autowired;

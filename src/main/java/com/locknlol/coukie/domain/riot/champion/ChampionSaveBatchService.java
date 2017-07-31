@@ -43,7 +43,7 @@ public class ChampionSaveBatchService {
 	private ImageRepository imageRepository;
 
 
-	@Scheduled(fixedDelay = 1000*60*60*12)
+	@Scheduled(fixedDelay = 1000*60*60*24)
 	public int saveAllChampions() {
 		ChampionListDto allChampion = championAdapterService.getAllChampion();
 		List<ChampionDto> allChampionList = new ArrayList<>(allChampion.getChampionMap().values());

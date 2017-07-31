@@ -1,5 +1,6 @@
-package com.locknlol.coukie.adapter;
+package com.locknlol.coukie.adapter.riot;
 
+import com.locknlol.coukie.adapter.Adapter;
 import com.locknlol.coukie.domain.common.parser.JsonParser;
 import com.locknlol.coukie.adapter.riot.RiotRequest;
 import com.locknlol.coukie.adapter.riot.RiotUrlBuilder;

@@ -17,7 +17,7 @@ public class RiotUrlBuilder {
 	private static final ApiKeyGenerator apiKeyGenerator = ApiKeyGenerator.getInstance();
 
 	//temp
-	private static final String apiKeyForDevelop = "RGAPI-4de3618f-8491-4fa0-92e3-d104e9e3b70a";
+	private static final String apiKeyForDevelop = "RGAPI-c98bfd7c-ca78-4ea7-a864-bfe81c88bf7f";
 
 	public String buildUrl(RiotApiUrl url, Map<String, Object> requestParam) {
 		UriComponentsBuilder builder = UriComponentsBuilder.fromUriString(DOMAIN + url.getUrl());

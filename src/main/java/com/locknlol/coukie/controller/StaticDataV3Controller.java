@@ -29,28 +29,11 @@ import java.util.Map;
 @RequestMapping("/staticDataV3")
 public class StaticDataV3Controller {
 
-	private final ChampionAdapterService championAdapterService;
-	private final ItemAdapterService itemAdapterService;
-	private final SummonerSpellInfoAdapterService summonerSpellInfoAdapterService;
 	private final ChampionRepository championRepository;
 
 	@Autowired
-	public StaticDataV3Controller(ChampionAdapterService championAdapterService,
-		ItemAdapterService itemAdapterService,
-		SummonerSpellInfoAdapterService summonerSpellInfoAdapterService,
-		ChampionRepository championRepository) {
-		this.championAdapterService = championAdapterService;
-		this.itemAdapterService = itemAdapterService;
-		this.summonerSpellInfoAdapterService = summonerSpellInfoAdapterService;
+	public StaticDataV3Controller(ChampionRepository championRepository) {
 		this.championRepository = championRepository;
-	}
-
-	@ResponseBody
-	@RequestMapping("/champions")
-	private List<ChampionDto> getAllChamp() {
-		ChampionListDto allChampion = championAdapterService.getAllChampion();
-		Map<String, ChampionDto> championDtoMap = allChampion.getChampionMap();
-		return new ArrayList<>(championDtoMap.values());
 	}
 
 	@RequestMapping("/getChampionImage")
@@ -58,20 +41,6 @@ public class StaticDataV3Controller {
 	private String getChampionImage(String id) {
 		Champion one = championRepository.findOne(Long.parseLong(id));
 		return one.getImage().getImgUrl();
-	}
-
-	@ResponseBody
-	@RequestMapping("/items")
-	private Map<String, ItemDto> getAllItems() {
-		ItemListDto allItems = itemAdapterService.getAllItems();
-		return allItems.getData();
-	}
-
-	@ResponseBody
-	@RequestMapping("/summonerSpells/{id}")
-	private SummonerSpellDto getSummonerSpellsById(@PathVariable int id) {
-		return summonerSpellInfoAdapterService.getSummonerSpellById(id);
-
 	}
 
 }

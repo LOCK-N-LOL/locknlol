@@ -33,7 +33,7 @@ public class ItemSaveBatchService {
 	@Autowired
 	private ImageRepository imageRepository;
 
-	@Scheduled(fixedDelay = 1000*60*60*12)
+	@Scheduled(fixedDelay = 1000*60*60*24)
 	public int saveAllItems() {
 		ItemListDto allItems = itemAdapterService.getAllItems();
 		ArrayList<ItemDto> itemDtos = new ArrayList<>(allItems.getData().values());
