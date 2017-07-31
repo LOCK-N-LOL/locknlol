@@ -16,7 +16,7 @@ class LeaguePosition extends React.Component {
             <div>
                 <div className="row">
                     <div className="col-md-6">
-                        <img src={this.props.imageSrc}/>
+                        <img src={this.props.rankImg}/>
                     </div>
                     <div className="col-md-6">
                         <div className="row">
@@ -29,10 +29,10 @@ class LeaguePosition extends React.Component {
                             포인트 : {this.props.leaguePoints}LP {this.props.wins}승 {this.props.losses}패
                         </div>
                         <div className="row">
-                            승률 :
+                            승률 : { this.props.winRate}
                         </div>
                         <div className="row">
-                            {this.props.data.leagueName}
+                            {this.props.leagueName}
                         </div>
                     </div>
                 </div>
@@ -51,20 +51,21 @@ export default class extends React.Component {
     }
 
     componentDidMount() {
-        this.getLeaguePositionById(this.props.summonerId);
+        this.getLeaguePositionByName(this.props.summonerName);
     }
 
-    getLeaguePositionById(id){
-        const deferred = Promise.resolve($.get({url: `/summoner/profile/league/position`, data: {summonerId: id}}).done());
+    getLeaguePositionByName(summonerName){
+        const deferred = Promise.resolve($.get({url: '/summoner/profile/league/position', data: {summonerName: summonerName}}).done());
         deferred.then(leaguePosition => this.setState({
             leaguePositions: leaguePosition
         }));
+
     }
 
     render() {
         const leaguePositionComponent = [];
         this.state.leaguePositions.forEach((leaguePosition) => {
-            leaguePositionComponent.push(<LeaguePosition {...leaguePosition} imageSrc={"https://opgg-static.akamaized.net/images/medals/challenger_1.png"}/>)
+            leaguePositionComponent.push(<LeaguePosition {...leaguePosition}/>)
         });
 
         return (

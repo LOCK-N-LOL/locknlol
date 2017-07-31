@@ -8,4 +8,4 @@ import ReactDOM from 'react-dom';
 import LeaguePositions from './LeaguePositions';
 
 const content = document.getElementById("leaguePositions");
-ReactDOM.render(<LeaguePositions summonerId="2538840" /> , content);
+ReactDOM.render(<LeaguePositions summonerName="리신드라장인" /> , content);
